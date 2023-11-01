@@ -3,7 +3,7 @@ package pl.hetman.wiktoria.solvd.carrental;
 import pl.hetman.wiktoria.solvd.car.CarModel;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 
-public class CarRentalShop extends CarRentalOffer{
+public class CarRentalShop extends CarRentalOffer implements Shop{
 
     private void chooseOffer(){
         System.out.println("Choose offer");
@@ -21,4 +21,23 @@ public class CarRentalShop extends CarRentalOffer{
     }
 
 
+    @Override
+    public void addToBasket(CarModel carModel, InsuranceModel insuranceModel) {
+        chooseOffer();
+        chooseOffer(carModel, insuranceModel);
+    }
+
+    @Override
+    public void removeFromBasket() {
+
+        System.out.println("Remove chosen offer from basket");
+
+    }
+
+    @Override
+    public void finishShopping() {
+
+        System.out.println("Finish your purchase");
+
+    }
 }
