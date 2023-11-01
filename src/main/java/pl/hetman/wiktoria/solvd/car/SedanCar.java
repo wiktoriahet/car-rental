@@ -5,10 +5,18 @@ import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 public class SedanCar extends CarModel{
 
     private boolean premium;
+    static int count;
+
+    static{
+        count = 0;
+        System.out.println("Current amount of sedan cars in use: " + count);
+    }
+
 
     public SedanCar(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay, InsuranceModel insuranceModel, boolean premium) {
         super(id, carModelName, airConditioning, spareTire, feePerDay, insuranceModel);
         this.premium = premium;
+        count++;
     }
 
     public boolean isPremium() {

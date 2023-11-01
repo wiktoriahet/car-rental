@@ -7,12 +7,19 @@ public class SuvCar extends CarModel{
     private boolean fullSize;
     private boolean fourWheelDrive;
     private boolean premium;
+    static int count;
+
+    static{
+        count = 0;
+        System.out.println("Current amount of suv cars in use: " + count);
+    }
 
     public SuvCar(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay, InsuranceModel insuranceModel, boolean fullSize, boolean fourWheelDrive, boolean premium) {
         super(id, carModelName, airConditioning, spareTire, feePerDay, insuranceModel);
         this.fullSize = fullSize;
         this.fourWheelDrive = fourWheelDrive;
         this.premium = premium;
+        count++;
     }
 
     public boolean isFullSize() {
