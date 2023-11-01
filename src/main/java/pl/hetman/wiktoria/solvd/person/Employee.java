@@ -17,6 +17,7 @@ public class Employee extends Person{
         this.surname = surname;
         this.department = department;
         this.customers = customers;
+        printInformation();
     }
 
     @Override
@@ -35,6 +36,8 @@ public class Employee extends Person{
         System.out.println(stringBuilder);
 
     }
+
+
 
     public Long getId() {
         return id;

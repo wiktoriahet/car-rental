@@ -19,6 +19,7 @@ public class Customer extends Person{
         this.surname = surname;
         this.insuranceModel = insuranceModel;
         this.carModel = carModel;
+        printInformation();
     }
 
     @Override
