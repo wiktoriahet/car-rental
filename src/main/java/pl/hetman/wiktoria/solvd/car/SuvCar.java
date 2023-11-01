@@ -2,14 +2,14 @@ package pl.hetman.wiktoria.solvd.car;
 
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 
-public class SuvCar extends CarModel{
+public class SuvCar extends CarModel {
 
     private boolean fullSize;
     private boolean fourWheelDrive;
     private boolean premium;
     static int count;
 
-    static{
+    static {
         count = 0;
         System.out.println("Current amount of suv cars in use: " + count);
     }
@@ -20,6 +20,19 @@ public class SuvCar extends CarModel{
         this.fourWheelDrive = fourWheelDrive;
         this.premium = premium;
         count++;
+    }
+
+    @Override
+    public void displayInformation() {
+        super.displayInformation();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder
+                .append("Premium car: " + premium)
+                .append("\n")
+                .append("Four wheel drive: " + fourWheelDrive)
+                .append("\n")
+                .append("Full size: " + fullSize);
+        System.out.println(stringBuilder);
     }
 
     public boolean isFullSize() {

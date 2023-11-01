@@ -19,6 +19,15 @@ public class SedanCar extends CarModel{
         count++;
     }
 
+    @Override
+    public void displayInformation() {
+        super.displayInformation();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder
+                .append("Premium car: " + premium);
+        System.out.println(stringBuilder);
+    }
+
     public boolean isPremium() {
         return premium;
     }

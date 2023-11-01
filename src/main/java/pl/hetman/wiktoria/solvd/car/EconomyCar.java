@@ -18,6 +18,6 @@ public class EconomyCar extends CarModel{
 
     @Override
     public String toString() {
-        return super.toString();
+        return "EconomyCar{}";
     }
 }
