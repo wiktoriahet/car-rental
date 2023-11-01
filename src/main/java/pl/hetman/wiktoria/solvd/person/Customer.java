@@ -5,7 +5,7 @@ import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 
 import java.util.Objects;
 
-public class Customer extends Person{
+public class Customer extends PersonModel {
 
     private Long id;
     private String name;
@@ -36,6 +36,11 @@ public class Customer extends Person{
 
         System.out.println(stringBuilder);
 
+    }
+
+    @Override
+    public void createAPerson() {
+        System.out.println("Create a customer");
     }
 
     public Long getId() {

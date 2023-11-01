@@ -3,7 +3,7 @@ package pl.hetman.wiktoria.solvd.person;
 import java.util.List;
 import java.util.Objects;
 
-public class Employee extends Person{
+public class Employee extends PersonModel {
 
     private Long id;
     private String name;
@@ -37,6 +37,10 @@ public class Employee extends Person{
 
     }
 
+    @Override
+    public void createAPerson() {
+        System.out.println("Create an employee");
+    }
 
 
     public Long getId() {
