@@ -3,7 +3,7 @@ package pl.hetman.wiktoria.solvd.idgenerator;
 import java.util.Random;
 import java.util.logging.Logger;
 
-public class UniqueIdGenerator {
+public final class UniqueIdGenerator {
 
     public static Long generateId(){
         Random random = new Random();
