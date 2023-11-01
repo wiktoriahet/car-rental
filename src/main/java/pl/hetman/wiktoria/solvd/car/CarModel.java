@@ -33,8 +33,7 @@ public class CarModel implements Car {
                 .append("\n")
                 .append("Spare tire: " + spareTire)
                 .append("\n")
-                .append("Fee per day: " + feePerDay)
-                .append("\n");
+                .append("Fee per day: " + feePerDay);
 
         System.out.println(stringBuilder);
 
