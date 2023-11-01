@@ -5,6 +5,8 @@ import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 
 public class CarRentalShop extends CarRentalOffer implements Shop{
 
+    private final String carRentalName = "Car Rental Service";
+
     private void chooseOffer(){
         System.out.println("Choose offer");
     }
@@ -39,5 +41,16 @@ public class CarRentalShop extends CarRentalOffer implements Shop{
 
         System.out.println("Finish your purchase");
 
+    }
+
+    public String getCarRentalName() {
+        return carRentalName;
+    }
+
+    @Override
+    public String toString() {
+        return "CarRentalShop{" +
+                "carRentalName='" + carRentalName + '\'' +
+                '}';
     }
 }
