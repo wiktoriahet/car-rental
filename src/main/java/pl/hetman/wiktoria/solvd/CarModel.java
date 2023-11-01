@@ -9,13 +9,15 @@ public class CarModel implements Car {
     private boolean airConditioning;
     private boolean spareTire;
     double feePerDay;
+    private InsuranceModel insuranceModel;
 
-    public CarModel(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay) {
+    public CarModel(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay, InsuranceModel insuranceModel) {
         this.id = id;
         this.carModelName = carModelName;
         this.airConditioning = airConditioning;
         this.spareTire = spareTire;
         this.feePerDay = feePerDay;
+        this.insuranceModel = insuranceModel;
     }
 
     @Override
@@ -36,12 +38,25 @@ public class CarModel implements Car {
     }
 
     @Override
-    public double getPrice() {
-        return 0;
+    public double getPrice(int days, InsuranceModel insuranceModel) {
+
+        double priceOfInsurance = insuranceModel.getPrice();
+        double priceInTotal = priceOfInsurance + (days*feePerDay);
+
+        return priceInTotal;
     }
 
     @Override
-    public void rentCar() {
+    public void rentCar(int days, InsuranceModel insuranceModel) {
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder
+                .append("Car rented for " + days + "day(s)")
+                .append("\n")
+                .append("Total price =  " + getPrice(days, insuranceModel));
+
+        System.out.println(stringBuilder);
+
 
     }
 
@@ -85,16 +100,24 @@ public class CarModel implements Car {
         this.feePerDay = feePerDay;
     }
 
+    public InsuranceModel getInsuranceModel() {
+        return insuranceModel;
+    }
+
+    public void setInsuranceModel(InsuranceModel insuranceModel) {
+        this.insuranceModel = insuranceModel;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof CarModel carModel)) return false;
-        return isAirConditioning() == carModel.isAirConditioning() && isSpareTire() == carModel.isSpareTire() && Double.compare(carModel.getFeePerDay(), getFeePerDay()) == 0 && getId().equals(carModel.getId()) && getCarModelName().equals(carModel.getCarModelName());
+        return isAirConditioning() == carModel.isAirConditioning() && isSpareTire() == carModel.isSpareTire() && Double.compare(carModel.getFeePerDay(), getFeePerDay()) == 0 && getId().equals(carModel.getId()) && getCarModelName().equals(carModel.getCarModelName()) && getInsuranceModel().equals(carModel.getInsuranceModel());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getCarModelName(), isAirConditioning(), isSpareTire(), getFeePerDay());
+        return Objects.hash(getId(), getCarModelName(), isAirConditioning(), isSpareTire(), getFeePerDay(), getInsuranceModel());
     }
 
     @Override
@@ -105,6 +128,8 @@ public class CarModel implements Car {
                 ", airConditioning=" + airConditioning +
                 ", spareTire=" + spareTire +
                 ", feePerDay=" + feePerDay +
+                ", insuranceModel=" + insuranceModel +
                 '}';
     }
 }
+
