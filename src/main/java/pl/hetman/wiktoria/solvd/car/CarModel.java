@@ -1,4 +1,6 @@
-package pl.hetman.wiktoria.solvd;
+package pl.hetman.wiktoria.solvd.car;
+
+import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 
 import java.util.Objects;
 
