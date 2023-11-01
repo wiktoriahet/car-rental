@@ -22,6 +22,19 @@ public class Employee extends Person{
     @Override
     void printInformation() {
 
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder
+                .append("Employee ID: " + id)
+                .append("\n")
+                .append("Name and surname: " + name + " " + surname)
+                .append("\n")
+                .append("Department: " + department)
+                .append("\n")
+                .append("Customers: " + customers.toString())
+                .append("\n");
+
+        System.out.println(stringBuilder);
+
     }
 
     public Long getId() {
