@@ -1,4 +1,4 @@
-package pl.hetman.wiktoria.solvd;
+package pl.hetman.wiktoria.solvd.insurance;
 
 public interface Insurance {
 

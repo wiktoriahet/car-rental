@@ -1,4 +1,4 @@
-package pl.hetman.wiktoria.solvd;
+package pl.hetman.wiktoria.solvd.insurance;
 
 import java.util.Objects;
 
@@ -9,6 +9,7 @@ public class InsuranceModel implements Insurance{
     boolean theftInsurance;
     boolean accidentsInsurance;
     boolean destructionInsurance;
+    private double price;
 
     @Override
     public String chooseInsurance(String packageName) {
@@ -16,12 +17,13 @@ public class InsuranceModel implements Insurance{
         return packageName;
     }
 
-    public InsuranceModel(Long id, String packageName, boolean theftInsurance, boolean accidentsInsurance, boolean destructionInsurance) {
+    public InsuranceModel(Long id, String packageName, boolean theftInsurance, boolean accidentsInsurance, boolean destructionInsurance, double price) {
         this.id = id;
         this.packageName = packageName;
         this.theftInsurance = theftInsurance;
         this.accidentsInsurance = accidentsInsurance;
         this.destructionInsurance = destructionInsurance;
+        this.price = price;
     }
 
     public Long getId() {
@@ -64,16 +66,24 @@ public class InsuranceModel implements Insurance{
         this.destructionInsurance = destructionInsurance;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof InsuranceModel that)) return false;
-        return isTheftInsurance() == that.isTheftInsurance() && isAccidentsInsurance() == that.isAccidentsInsurance() && isDestructionInsurance() == that.isDestructionInsurance() && getId().equals(that.getId()) && getPackageName().equals(that.getPackageName());
+        return isTheftInsurance() == that.isTheftInsurance() && isAccidentsInsurance() == that.isAccidentsInsurance() && isDestructionInsurance() == that.isDestructionInsurance() && Double.compare(that.getPrice(), getPrice()) == 0 && getId().equals(that.getId()) && getPackageName().equals(that.getPackageName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getPackageName(), isTheftInsurance(), isAccidentsInsurance(), isDestructionInsurance());
+        return Objects.hash(getId(), getPackageName(), isTheftInsurance(), isAccidentsInsurance(), isDestructionInsurance(), getPrice());
     }
 
     @Override
@@ -84,6 +94,7 @@ public class InsuranceModel implements Insurance{
                 ", theftInsurance=" + theftInsurance +
                 ", accidentsInsurance=" + accidentsInsurance +
                 ", destructionInsurance=" + destructionInsurance +
+                ", price=" + price +
                 '}';
     }
 }
