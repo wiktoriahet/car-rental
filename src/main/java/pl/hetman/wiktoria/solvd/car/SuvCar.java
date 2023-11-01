@@ -11,7 +11,7 @@ public class SuvCar extends CarModel {
 
     static {
         count = 0;
-        System.out.println("Current amount of suv cars in use: " + count);
+        System.out.println("Suv car static block");
     }
 
     public SuvCar(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay, InsuranceModel insuranceModel, boolean fullSize, boolean fourWheelDrive, boolean premium) {
@@ -20,6 +20,10 @@ public class SuvCar extends CarModel {
         this.fourWheelDrive = fourWheelDrive;
         this.premium = premium;
         count++;
+    }
+
+    public static void displayCount(){
+        System.out.println("Suv cars in use: " + count);
     }
 
     @Override

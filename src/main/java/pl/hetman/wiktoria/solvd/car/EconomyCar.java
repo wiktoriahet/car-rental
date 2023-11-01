@@ -8,12 +8,16 @@ public class EconomyCar extends CarModel{
 
     static{
         count = 0;
-        System.out.println("Current amount of economy cars in use: " + count);
+        System.out.println("Economy car static block");
     }
 
     public EconomyCar(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay, InsuranceModel insuranceModel) {
         super(id, carModelName, airConditioning, spareTire, feePerDay, insuranceModel);
         count++;
+    }
+
+    public static void displayCount(){
+        System.out.println("Economy cars in use: " + count);
     }
 
     @Override

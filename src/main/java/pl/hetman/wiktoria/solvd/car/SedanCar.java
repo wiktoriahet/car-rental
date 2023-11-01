@@ -9,7 +9,7 @@ public class SedanCar extends CarModel{
 
     static{
         count = 0;
-        System.out.println("Current amount of sedan cars in use: " + count);
+        System.out.println("Sedan car static block");
     }
 
 
@@ -17,6 +17,10 @@ public class SedanCar extends CarModel{
         super(id, carModelName, airConditioning, spareTire, feePerDay, insuranceModel);
         this.premium = premium;
         count++;
+    }
+
+    public static void displayCount(){
+        System.out.println("Sedan cars in use: " + count);
     }
 
     @Override
