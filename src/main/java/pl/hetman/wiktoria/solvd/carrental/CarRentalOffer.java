@@ -6,16 +6,11 @@ import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 
 public class CarRentalOffer implements Offer{
 
-    private InsuranceModel insuranceModel;
-    private CarModel carModel;
-
-    public CarRentalOffer(InsuranceModel insuranceModel, CarModel carModel) {
-        this.insuranceModel = insuranceModel;
-        this.carModel = carModel;
+    public CarRentalOffer() {
     }
 
     @Override
-    public void printOffer() {
+    public final void printOffer() {
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
@@ -26,27 +21,4 @@ public class CarRentalOffer implements Offer{
         System.out.println(stringBuilder);
     }
 
-    public InsuranceModel getInsuranceModel() {
-        return insuranceModel;
-    }
-
-    public void setInsuranceModel(InsuranceModel insuranceModel) {
-        this.insuranceModel = insuranceModel;
-    }
-
-    public CarModel getCarModel() {
-        return carModel;
-    }
-
-    public void setCarModel(CarModel carModel) {
-        this.carModel = carModel;
-    }
-
-    @Override
-    public String toString() {
-        return "CarRentalOffer{" +
-                "insuranceModel=" + insuranceModel +
-                ", carModel=" + carModel +
-                '}';
-    }
 }

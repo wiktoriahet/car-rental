@@ -3,6 +3,7 @@ package pl.hetman.wiktoria.solvd;
 import pl.hetman.wiktoria.solvd.car.CarModel;
 import pl.hetman.wiktoria.solvd.car.EconomyCar;
 import pl.hetman.wiktoria.solvd.car.SuvCar;
+import pl.hetman.wiktoria.solvd.carrental.CarRentalOffer;
 import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
 import pl.hetman.wiktoria.solvd.insurance.Insurance;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
@@ -14,6 +15,9 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+
+        CarRentalOffer carRentalOffer = new CarRentalOffer();
+        carRentalOffer.printOffer();
 
         List<Customer> customers = new ArrayList<>();
 
