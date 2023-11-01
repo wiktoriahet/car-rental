@@ -30,8 +30,7 @@ public class Employee extends Person{
                 .append("\n")
                 .append("Department: " + department)
                 .append("\n")
-                .append("Customers: " + customers.toString())
-                .append("\n");
+                .append("Customers: " + customers.toString());
 
         System.out.println(stringBuilder);
 
