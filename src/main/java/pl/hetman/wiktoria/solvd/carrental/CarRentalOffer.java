@@ -9,6 +9,11 @@ public class CarRentalOffer implements Offer{
     private InsuranceModel insuranceModel;
     private CarModel carModel;
 
+    public CarRentalOffer(InsuranceModel insuranceModel, CarModel carModel) {
+        this.insuranceModel = insuranceModel;
+        this.carModel = carModel;
+    }
+
     @Override
     public void printOffer() {
 
@@ -19,5 +24,29 @@ public class CarRentalOffer implements Offer{
                 .append("Insurance packages available: Basic, Premium, Deluxe");
 
         System.out.println(stringBuilder);
+    }
+
+    public InsuranceModel getInsuranceModel() {
+        return insuranceModel;
+    }
+
+    public void setInsuranceModel(InsuranceModel insuranceModel) {
+        this.insuranceModel = insuranceModel;
+    }
+
+    public CarModel getCarModel() {
+        return carModel;
+    }
+
+    public void setCarModel(CarModel carModel) {
+        this.carModel = carModel;
+    }
+
+    @Override
+    public String toString() {
+        return "CarRentalOffer{" +
+                "insuranceModel=" + insuranceModel +
+                ", carModel=" + carModel +
+                '}';
     }
 }
