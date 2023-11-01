@@ -5,6 +5,5 @@ public interface Car {
     void displayInformation();
     double getPrice();
     void rentCar();
-    void chooseInsurance();
 
 }

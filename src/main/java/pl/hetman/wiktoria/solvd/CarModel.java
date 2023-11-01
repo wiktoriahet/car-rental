@@ -45,11 +45,6 @@ public class CarModel implements Car {
 
     }
 
-    @Override
-    public void chooseInsurance() {
-
-    }
-
     public Long getId() {
         return id;
     }
