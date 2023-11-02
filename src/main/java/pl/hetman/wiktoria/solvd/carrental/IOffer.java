@@ -1,6 +1,6 @@
 package pl.hetman.wiktoria.solvd.carrental;
 
-public interface Offer {
+public interface IOffer {
 
     void printOffer();
 

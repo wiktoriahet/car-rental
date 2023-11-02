@@ -2,7 +2,7 @@ package pl.hetman.wiktoria.solvd.insurance;
 
 import java.util.Objects;
 
-public class InsuranceModel implements Insurance{
+public class InsuranceModel implements IInsurance {
 
     private Long id;
     private String packageName;

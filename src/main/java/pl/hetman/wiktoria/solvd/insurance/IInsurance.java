@@ -1,6 +1,6 @@
 package pl.hetman.wiktoria.solvd.insurance;
 
-public interface Insurance {
+public interface IInsurance {
 
     String chooseInsurance(String packageName);
 

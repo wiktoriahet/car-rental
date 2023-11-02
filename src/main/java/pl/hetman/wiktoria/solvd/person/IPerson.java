@@ -1,6 +1,6 @@
 package pl.hetman.wiktoria.solvd.person;
 
-public interface Person {
+public interface IPerson {
 
     void createAPerson();
 

@@ -3,7 +3,7 @@ package pl.hetman.wiktoria.solvd.carrental;
 import pl.hetman.wiktoria.solvd.car.CarModel;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 
-public class CarRentalShop extends CarRentalOffer implements Shop{
+public class CarRentalShop extends CarRentalOffer implements IShop {
 
     private final String carRentalName = "Car Rental Service";
 

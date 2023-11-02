@@ -2,7 +2,7 @@ package pl.hetman.wiktoria.solvd.car;
 
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 
-public class EconomyCar extends CarModel{
+public class EconomyCar extends CarModel {
 
     static int count;
 

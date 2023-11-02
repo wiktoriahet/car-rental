@@ -4,7 +4,7 @@ import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 
 import java.util.Objects;
 
-public class CarModel implements Car {
+public class CarModel implements ICar {
 
     private Long id;
     private String carModelName;
