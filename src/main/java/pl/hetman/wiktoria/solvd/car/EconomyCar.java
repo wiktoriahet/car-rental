@@ -11,8 +11,8 @@ public class EconomyCar extends CarModel {
         System.out.println("Economy car static block");
     }
 
-    public EconomyCar(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay, InsuranceModel insuranceModel) {
-        super(id, carModelName, airConditioning, spareTire, feePerDay, insuranceModel);
+    public EconomyCar(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay) {
+        super(id, carModelName, airConditioning, spareTire, feePerDay);
         count++;
     }
 

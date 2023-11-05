@@ -1,7 +1,5 @@
 package pl.hetman.wiktoria.solvd.car;
 
-import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
-
 import java.util.Objects;
 
 public class CarModel implements ICar {
@@ -11,15 +9,13 @@ public class CarModel implements ICar {
     private boolean airConditioning;
     private boolean spareTire;
     double feePerDay;
-    private InsuranceModel insuranceModel;
 
-    public CarModel(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay, InsuranceModel insuranceModel) {
+    public CarModel(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay) {
         this.id = id;
         this.carModelName = carModelName;
         this.airConditioning = airConditioning;
         this.spareTire = spareTire;
         this.feePerDay = feePerDay;
-        this.insuranceModel = insuranceModel;
     }
 
     @Override
@@ -36,29 +32,6 @@ public class CarModel implements ICar {
                 .append("Fee per day: " + feePerDay);
 
         System.out.println(stringBuilder);
-
-    }
-
-    @Override
-    public double getPrice(int days, InsuranceModel insuranceModel) {
-
-        double priceOfInsurance = insuranceModel.getPrice();
-        double priceInTotal = priceOfInsurance + (days*feePerDay);
-
-        return priceInTotal;
-    }
-
-    @Override
-    public void rentCar(int days, InsuranceModel insuranceModel) {
-
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder
-                .append("Car rented for " + days + "day(s)")
-                .append("\n")
-                .append("Total price =  " + getPrice(days, insuranceModel));
-
-        System.out.println(stringBuilder);
-
 
     }
 
@@ -102,24 +75,16 @@ public class CarModel implements ICar {
         this.feePerDay = feePerDay;
     }
 
-    public InsuranceModel getInsuranceModel() {
-        return insuranceModel;
-    }
-
-    public void setInsuranceModel(InsuranceModel insuranceModel) {
-        this.insuranceModel = insuranceModel;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof CarModel carModel)) return false;
-        return isAirConditioning() == carModel.isAirConditioning() && isSpareTire() == carModel.isSpareTire() && Double.compare(carModel.getFeePerDay(), getFeePerDay()) == 0 && getId().equals(carModel.getId()) && getCarModelName().equals(carModel.getCarModelName()) && getInsuranceModel().equals(carModel.getInsuranceModel());
+        return isAirConditioning() == carModel.isAirConditioning() && isSpareTire() == carModel.isSpareTire() && Double.compare(carModel.getFeePerDay(), getFeePerDay()) == 0 && getId().equals(carModel.getId()) && getCarModelName().equals(carModel.getCarModelName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getCarModelName(), isAirConditioning(), isSpareTire(), getFeePerDay(), getInsuranceModel());
+        return Objects.hash(getId(), getCarModelName(), isAirConditioning(), isSpareTire(), getFeePerDay());
     }
 
     @Override
@@ -130,7 +95,6 @@ public class CarModel implements ICar {
                 ", airConditioning=" + airConditioning +
                 ", spareTire=" + spareTire +
                 ", feePerDay=" + feePerDay +
-                ", insuranceModel=" + insuranceModel +
                 '}';
     }
 }

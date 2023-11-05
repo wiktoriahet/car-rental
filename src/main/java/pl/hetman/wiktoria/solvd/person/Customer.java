@@ -1,7 +1,9 @@
 package pl.hetman.wiktoria.solvd.person;
 
 import pl.hetman.wiktoria.solvd.car.CarModel;
+import pl.hetman.wiktoria.solvd.exceptions.PersonException;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
+import pl.hetman.wiktoria.solvd.logs.FileLogger;
 
 import java.util.Objects;
 
@@ -13,7 +15,7 @@ public class Customer extends PersonModel {
     private InsuranceModel insuranceModel;
     private CarModel carModel;
 
-    public Customer(Long id, String name, String surname, InsuranceModel insuranceModel, CarModel carModel) {
+    public Customer(Long id, String name, String surname, InsuranceModel insuranceModel, CarModel carModel) throws PersonException{
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -23,7 +25,12 @@ public class Customer extends PersonModel {
     }
 
     @Override
-    void printInformation() {
+    void printInformation() throws PersonException {
+        if(id==null){
+            PersonException personException = new PersonException("Customer doesn't exist");
+            FileLogger.logToFile(personException.getMessage());
+            throw personException;
+        }
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
                 .append("Customer ID: " + id)
@@ -36,11 +43,6 @@ public class Customer extends PersonModel {
 
         System.out.println(stringBuilder);
 
-    }
-
-    @Override
-    public void createAPerson() {
-        System.out.println("Create a customer");
     }
 
     public Long getId() {
