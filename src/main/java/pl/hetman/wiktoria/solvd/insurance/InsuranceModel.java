@@ -1,8 +1,13 @@
 package pl.hetman.wiktoria.solvd.insurance;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import pl.hetman.wiktoria.solvd.carrental.CarRentalShop;
+
 import java.util.Objects;
 
 public class InsuranceModel implements IInsurance {
+    private static final Logger LOGGER = LogManager.getLogger(InsuranceModel.class);
 
     private Long id;
     private String packageName;
@@ -11,19 +16,23 @@ public class InsuranceModel implements IInsurance {
     boolean destructionInsurance;
     private double price;
 
-    @Override
-    public String chooseInsurance(String packageName) {
-        setPackageName(packageName);
-        return packageName;
-    }
-
     public InsuranceModel(Long id, String packageName, boolean theftInsurance, boolean accidentsInsurance, boolean destructionInsurance, double price) {
+        LOGGER.always().log("InsuranceModel()");
         this.id = id;
         this.packageName = packageName;
         this.theftInsurance = theftInsurance;
         this.accidentsInsurance = accidentsInsurance;
         this.destructionInsurance = destructionInsurance;
         this.price = price;
+        LOGGER.always().log("InsuranceModel(...)");
+    }
+
+    @Override
+    public String chooseInsurance(String packageName) {
+        LOGGER.always().log("chooseInsurance("+packageName+")");
+        setPackageName(packageName);
+        LOGGER.always().log("chooseInsurance(...)");
+        return packageName;
     }
 
     public Long getId() {

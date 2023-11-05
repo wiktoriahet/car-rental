@@ -1,12 +1,19 @@
 package pl.hetman.wiktoria.solvd.carrental;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import pl.hetman.wiktoria.solvd.carrental.rent.CarRentalModel;
+
 public class CarRentalOffer implements IOffer {
+
+    private static final Logger LOGGER = LogManager.getLogger(CarRentalOffer.class);
 
     public CarRentalOffer() {
     }
 
     @Override
     public final void printOffer() {
+        LOGGER.always().log("printOffer()");
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
@@ -15,6 +22,7 @@ public class CarRentalOffer implements IOffer {
                 .append("Insurance packages available: Basic, Premium, Deluxe");
 
         System.out.println(stringBuilder);
+        LOGGER.always().log("printOffer(...)");
     }
 
 }
