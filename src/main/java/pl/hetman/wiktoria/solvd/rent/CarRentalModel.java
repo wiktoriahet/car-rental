@@ -5,6 +5,7 @@ import pl.hetman.wiktoria.solvd.exceptions.CarException;
 import pl.hetman.wiktoria.solvd.exceptions.CarRentalException;
 import pl.hetman.wiktoria.solvd.exceptions.InsuranceException;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
+import pl.hetman.wiktoria.solvd.logs.FileLogger;
 
 import java.util.Optional;
 
@@ -28,7 +29,9 @@ public class CarRentalModel implements IRental {
         boolean rented = false;
 
         if(insuranceModel==null){
-            throw new InsuranceException("Problem with insurance while renting a car");
+            InsuranceException insuranceException = new InsuranceException("Problem with insurance while renting a car");
+            FileLogger.logToFile(insuranceException.getMessage());
+            throw insuranceException;
         } else if(carModel==null){
             throw new CarException("Problem with car while renting a car");
         }
