@@ -1,0 +1,85 @@
+package pl.hetman.wiktoria.solvd.rent;
+
+import pl.hetman.wiktoria.solvd.car.CarModel;
+import pl.hetman.wiktoria.solvd.exceptions.CarRentalException;
+import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
+
+public class CarRentalModel implements IRental {
+
+    private Long id;
+    private int days;
+    private CarModel carModel;
+    private InsuranceModel insuranceModel;
+
+    public CarRentalModel(Long id, int days, CarModel carModel, InsuranceModel insuranceModel) {
+        this.id = id;
+        this.days = days;
+        this.carModel = carModel;
+        this.insuranceModel = insuranceModel;
+    }
+
+    @Override
+    public void rentACar(CarModel carModel, InsuranceModel insuranceModel) throws CarRentalException{
+        StringBuilder stringBuilder = new StringBuilder();
+
+        if(carModel==null||insuranceModel==null){
+            throw new CarRentalException("Problem while renting a car");
+        }
+        stringBuilder
+                .append("Car " + carModel.getId() + " rented for " + days + "day(s)")
+                .append("\n")
+                .append("Total price =  " + getPrice(carModel, insuranceModel));
+
+        System.out.println(stringBuilder);
+    }
+
+    @Override
+    public double getPrice(CarModel carModel, InsuranceModel insuranceModel) {
+        double priceOfInsurance = insuranceModel.getPrice();
+        double priceInTotal = priceOfInsurance + (days * carModel.getFeePerDay());
+
+        return priceInTotal;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getDays() {
+        return days;
+    }
+
+    public void setDays(int days) {
+        this.days = days;
+    }
+
+    public CarModel getCarModel() {
+        return carModel;
+    }
+
+    public void setCarModel(CarModel carModel) {
+        this.carModel = carModel;
+    }
+
+    public InsuranceModel getInsuranceModel() {
+        return insuranceModel;
+    }
+
+    public void setInsuranceModel(InsuranceModel insuranceModel) {
+        this.insuranceModel = insuranceModel;
+    }
+
+    @Override
+    public String toString() {
+        return "CarRentalModel{" +
+                "id=" + id +
+                ", days=" + days +
+                ", carModel=" + carModel +
+                ", insuranceModel=" + insuranceModel +
+                '}';
+    }
+}
