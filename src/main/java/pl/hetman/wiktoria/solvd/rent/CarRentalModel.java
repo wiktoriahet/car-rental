@@ -4,6 +4,8 @@ import pl.hetman.wiktoria.solvd.car.CarModel;
 import pl.hetman.wiktoria.solvd.exceptions.CarRentalException;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 
+import java.util.Optional;
+
 public class CarRentalModel implements IRental {
 
     private Long id;
@@ -19,8 +21,9 @@ public class CarRentalModel implements IRental {
     }
 
     @Override
-    public void rentACar(CarModel carModel, InsuranceModel insuranceModel) throws CarRentalException{
+    public boolean rentACar(CarModel carModel, InsuranceModel insuranceModel) throws CarRentalException{
         StringBuilder stringBuilder = new StringBuilder();
+        boolean rented = false;
 
         if(carModel==null||insuranceModel==null){
             throw new CarRentalException("Problem while renting a car");
@@ -30,7 +33,9 @@ public class CarRentalModel implements IRental {
                 .append("\n")
                 .append("Total price =  " + getPrice(carModel, insuranceModel));
 
+        rented = true;
         System.out.println(stringBuilder);
+        return rented;
     }
 
     @Override
