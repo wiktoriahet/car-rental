@@ -1,8 +1,13 @@
 package pl.hetman.wiktoria.solvd.car;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Objects;
 
 public class CarModel implements ICar {
+
+    private static final Logger LOGGER = LogManager.getLogger(CarModel.class);
 
     private Long id;
     private String carModelName;
@@ -11,15 +16,22 @@ public class CarModel implements ICar {
     double feePerDay;
 
     public CarModel(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay) {
+        LOGGER.always().log("CarModel("+id+", "+carModelName+", "+spareTire+", "+feePerDay+")");
         this.id = id;
         this.carModelName = carModelName;
         this.airConditioning = airConditioning;
         this.spareTire = spareTire;
         this.feePerDay = feePerDay;
+        LOGGER.always().log("CarModel(...)");
+
     }
 
     @Override
-    public void displayInformation() {
+    public boolean displayInformation() {
+
+        //LOGGER.info("displayInformation()");
+        LOGGER.always().log("displayInformation()");
+        boolean informationDisplayed = true;
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
@@ -32,6 +44,9 @@ public class CarModel implements ICar {
                 .append("Fee per day: " + feePerDay);
 
         System.out.println(stringBuilder);
+        //LOGGER.info("displayInformation(...)");
+        LOGGER.always().log("displayInformation(...)");
+        return informationDisplayed;
 
     }
 

@@ -1,5 +1,7 @@
 package pl.hetman.wiktoria.solvd.carrental.rent;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import pl.hetman.wiktoria.solvd.car.CarModel;
 import pl.hetman.wiktoria.solvd.exceptions.CarException;
 import pl.hetman.wiktoria.solvd.exceptions.CarRentalException;
@@ -9,30 +11,37 @@ import pl.hetman.wiktoria.solvd.logs.FileLogger;
 
 public class CarRentalModel implements IRental {
 
+    private static final Logger LOGGER = LogManager.getLogger(CarRentalModel.class);
+
     private Long id;
     private int days;
     private CarModel carModel;
     private InsuranceModel insuranceModel;
 
     public CarRentalModel(Long id, int days, CarModel carModel, InsuranceModel insuranceModel) {
+        LOGGER.always().log("CarRentalModel("+id+", "+days+", "+carModel+", "+insuranceModel+")");
         this.id = id;
         this.days = days;
         this.carModel = carModel;
         this.insuranceModel = insuranceModel;
+        LOGGER.always().log("CarRentalModel(...)");
     }
 
     @Override
     public boolean rentACar(CarModel carModel, InsuranceModel insuranceModel) throws CarRentalException{
+        LOGGER.always().log("rentACar("+carModel+", "+insuranceModel+")");
         StringBuilder stringBuilder = new StringBuilder();
         boolean rented = false;
 
         if(insuranceModel==null){
             InsuranceException insuranceException = new InsuranceException("Problem with insurance while renting a car" + "\n");
             FileLogger.logToFile(insuranceException.getMessage());
+            LOGGER.error(insuranceException.getMessage());
             throw insuranceException;
         } else if(carModel==null){
             CarException carException = new CarException("Problem with car while renting a car" + "\n");
             FileLogger.logToFile(carException.getMessage());
+            LOGGER.error(carException.getMessage());
             throw carException;
         }
         stringBuilder
@@ -42,14 +51,16 @@ public class CarRentalModel implements IRental {
 
         rented = true;
         System.out.println(stringBuilder);
+        LOGGER.always().log("rentACar(...)");
         return rented;
     }
 
     @Override
     public double getPrice(CarModel carModel, InsuranceModel insuranceModel) {
+        LOGGER.always().log("getPrice("+carModel+", "+insuranceModel+")");
         double priceOfInsurance = insuranceModel.getPrice();
         double priceInTotal = priceOfInsurance + (days * carModel.getFeePerDay());
-
+        LOGGER.always().log("getPrice(...)");
         return priceInTotal;
     }
 

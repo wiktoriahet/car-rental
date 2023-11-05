@@ -1,8 +1,12 @@
 package pl.hetman.wiktoria.solvd.car;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 
 public class SuvCar extends CarModel {
+
+    private static final Logger LOGGER = LogManager.getLogger(SuvCar.class);
 
     private boolean fullSize;
     private boolean fourWheelDrive;
@@ -16,19 +20,25 @@ public class SuvCar extends CarModel {
 
     public SuvCar(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay, boolean fullSize, boolean fourWheelDrive, boolean premium) {
         super(id, carModelName, airConditioning, spareTire, feePerDay);
+        LOGGER.always().log("SuvCar("+id+", "+carModelName+", "+airConditioning+", "+spareTire+", "+feePerDay+", "+fullSize+", "+fourWheelDrive+", "+premium+")");
         this.fullSize = fullSize;
         this.fourWheelDrive = fourWheelDrive;
         this.premium = premium;
         count++;
+        LOGGER.always().log("SuvCar(...)");
     }
 
     public static void displayCount(){
+        LOGGER.always().log("displayCount()");
         System.out.println("Suv cars in use: " + count);
+        LOGGER.always().log("displayCount(...)");
     }
 
     @Override
-    public void displayInformation() {
+    public boolean displayInformation() {
         super.displayInformation();
+        LOGGER.always().log("displayInformation()");
+        boolean informationDisplayed = true;
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
                 .append("Premium car: " + premium)
@@ -37,6 +47,8 @@ public class SuvCar extends CarModel {
                 .append("\n")
                 .append("Full size: " + fullSize);
         System.out.println(stringBuilder);
+        LOGGER.always().log("displayInformation(...)");
+        return informationDisplayed;
     }
 
     public boolean isFullSize() {

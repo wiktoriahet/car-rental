@@ -1,8 +1,13 @@
 package pl.hetman.wiktoria.solvd.car;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 
 public class EconomyCar extends CarModel {
+
+    private static final Logger LOGGER = LogManager.getLogger(EconomyCar.class);
+
 
     static int count;
 
@@ -13,7 +18,9 @@ public class EconomyCar extends CarModel {
 
     public EconomyCar(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay) {
         super(id, carModelName, airConditioning, spareTire, feePerDay);
+        LOGGER.always().log("Economy("+id+", "+carModelName+", "+spareTire+", "+feePerDay+")");
         count++;
+        LOGGER.always().log("Economy(...)");
     }
 
     public static void displayCount(){

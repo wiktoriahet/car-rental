@@ -1,6 +1,9 @@
 package pl.hetman.wiktoria.solvd.person;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import pl.hetman.wiktoria.solvd.car.CarModel;
+import pl.hetman.wiktoria.solvd.carrental.CarRentalShop;
 import pl.hetman.wiktoria.solvd.exceptions.PersonException;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 import pl.hetman.wiktoria.solvd.logs.FileLogger;
@@ -8,6 +11,7 @@ import pl.hetman.wiktoria.solvd.logs.FileLogger;
 import java.util.Objects;
 
 public class Customer extends PersonModel {
+    private static final Logger LOGGER = LogManager.getLogger(Customer.class);
 
     private Long id;
     private String name;
@@ -16,19 +20,23 @@ public class Customer extends PersonModel {
     private CarModel carModel;
 
     public Customer(Long id, String name, String surname, InsuranceModel insuranceModel, CarModel carModel) throws PersonException{
+        LOGGER.always().log("Customer("+id+", "+name+", "+surname+", "+insuranceModel+", "+carModel+")");
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.insuranceModel = insuranceModel;
         this.carModel = carModel;
         printInformation();
+        LOGGER.always().log("Customer(...)");
     }
 
     @Override
     void printInformation() throws PersonException {
+        LOGGER.always().log("printInformation()");
         if(id==null){
             PersonException personException = new PersonException("Customer doesn't exist");
             FileLogger.logToFile(personException.getMessage());
+            LOGGER.error(personException.getMessage());
             throw personException;
         }
         StringBuilder stringBuilder = new StringBuilder();
@@ -42,7 +50,7 @@ public class Customer extends PersonModel {
                 .append("Car id and name: " + carModel.getId() + " " + carModel.getCarModelName());
 
         System.out.println(stringBuilder);
-
+        LOGGER.always().log("printInformation(...)");
     }
 
     public Long getId() {

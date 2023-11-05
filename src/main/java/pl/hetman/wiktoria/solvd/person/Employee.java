@@ -1,5 +1,7 @@
 package pl.hetman.wiktoria.solvd.person;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import pl.hetman.wiktoria.solvd.exceptions.PersonException;
 import pl.hetman.wiktoria.solvd.logs.FileLogger;
 
@@ -7,6 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Employee extends PersonModel {
+    private static final Logger LOGGER = LogManager.getLogger(Employee.class);
 
     private Long id;
     private String name;
@@ -15,19 +18,23 @@ public class Employee extends PersonModel {
     private List<Customer> customers;
 
     public Employee(Long id, String name, String surname, String department, List<Customer> customers)throws PersonException {
+        LOGGER.always().log("Employee("+id+", "+name+", "+surname+", "+department+", "+customers+")");
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.department = department;
         this.customers = customers;
         printInformation();
+        LOGGER.always().log("Employee(...)");
     }
 
     @Override
     void printInformation() throws PersonException {
+        LOGGER.always().log("printInformation()");
         if(id==null){
             PersonException personException = new PersonException("Employee doesn't exist");
             FileLogger.logToFile(personException.getMessage());
+            LOGGER.error(personException.getMessage());
             throw personException;
         }
         StringBuilder stringBuilder = new StringBuilder();
@@ -41,6 +48,7 @@ public class Employee extends PersonModel {
                 .append("Customers: " + customers.toString());
 
         System.out.println(stringBuilder);
+        LOGGER.always().log("printInformation(...)");
 
     }
 
