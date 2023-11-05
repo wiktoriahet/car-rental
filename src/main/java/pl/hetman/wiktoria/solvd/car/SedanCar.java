@@ -14,7 +14,7 @@ public class SedanCar extends CarModel {
 
 
     public SedanCar(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay, InsuranceModel insuranceModel, boolean premium) {
-        super(id, carModelName, airConditioning, spareTire, feePerDay, insuranceModel);
+        super(id, carModelName, airConditioning, spareTire, feePerDay);
         this.premium = premium;
         count++;
     }

@@ -14,8 +14,8 @@ public class SuvCar extends CarModel {
         System.out.println("Suv car static block");
     }
 
-    public SuvCar(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay, InsuranceModel insuranceModel, boolean fullSize, boolean fourWheelDrive, boolean premium) {
-        super(id, carModelName, airConditioning, spareTire, feePerDay, insuranceModel);
+    public SuvCar(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay, boolean fullSize, boolean fourWheelDrive, boolean premium) {
+        super(id, carModelName, airConditioning, spareTire, feePerDay);
         this.fullSize = fullSize;
         this.fourWheelDrive = fourWheelDrive;
         this.premium = premium;
