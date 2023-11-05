@@ -17,7 +17,7 @@ class CarRentalModelTest {
     void rentACar() throws CarRentalException {
         //given
         InsuranceModel insuranceModel = new InsuranceModel(UniqueIdGenerator.generateId(), "Premium", true, true, true, 200);
-        CarModel carModel = new EconomyCar(UniqueIdGenerator.generateId(), "Ford", true, true, 120, insuranceModel);
+        CarModel carModel = new EconomyCar(UniqueIdGenerator.generateId(), "Ford", true, true, 120);
         CarRentalModel carRentalModel = new CarRentalModel(UniqueIdGenerator.generateId(), 7, carModel, insuranceModel);
 
         //when

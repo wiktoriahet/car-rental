@@ -1,7 +1,5 @@
 package pl.hetman.wiktoria.solvd.car;
 
-import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
-
 import java.util.Objects;
 
 public class CarModel implements ICar {
