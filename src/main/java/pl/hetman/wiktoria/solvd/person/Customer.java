@@ -15,7 +15,7 @@ public class Customer extends PersonModel {
     private InsuranceModel insuranceModel;
     private CarModel carModel;
 
-    public Customer(Long id, String name, String surname, InsuranceModel insuranceModel, CarModel carModel) {
+    public Customer(Long id, String name, String surname, InsuranceModel insuranceModel, CarModel carModel) throws PersonException{
         this.id = id;
         this.name = name;
         this.surname = surname;

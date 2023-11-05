@@ -1,0 +1,28 @@
+package pl.hetman.wiktoria.solvd.person;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import pl.hetman.wiktoria.solvd.car.CarModel;
+import pl.hetman.wiktoria.solvd.exceptions.PersonException;
+import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
+import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class CustomerTest {
+
+    @Test
+    void customer() throws PersonException {
+        //given
+        InsuranceModel insuranceModel = new InsuranceModel(UniqueIdGenerator.generateId(), "Deluxe", true, true, true, 500);
+        CarModel carModel = new CarModel(UniqueIdGenerator.generateId(), "ford", true, true, 500);
+        Customer customer = new Customer(UniqueIdGenerator.generateId(), "Anna", "Nowak", insuranceModel, carModel);
+
+        //when
+        Long id = customer.getId();
+
+        //then
+        Assertions.assertNotNull(id, "id is null");
+
+    }
+}
