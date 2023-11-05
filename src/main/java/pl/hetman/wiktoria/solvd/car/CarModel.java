@@ -39,29 +39,6 @@ public class CarModel implements ICar {
 
     }
 
-    @Override
-    public double getPrice(int days, InsuranceModel insuranceModel) {
-
-        double priceOfInsurance = insuranceModel.getPrice();
-        double priceInTotal = priceOfInsurance + (days*feePerDay);
-
-        return priceInTotal;
-    }
-
-    @Override
-    public void rentCar(int days, InsuranceModel insuranceModel) {
-
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder
-                .append("Car rented for " + days + "day(s)")
-                .append("\n")
-                .append("Total price =  " + getPrice(days, insuranceModel));
-
-        System.out.println(stringBuilder);
-
-
-    }
-
     public Long getId() {
         return id;
     }
