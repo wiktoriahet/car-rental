@@ -1,7 +1,13 @@
 package pl.hetman.wiktoria.solvd.carrental;
 
 import pl.hetman.wiktoria.solvd.car.CarModel;
+import pl.hetman.wiktoria.solvd.exceptions.CarException;
+import pl.hetman.wiktoria.solvd.exceptions.CarRentalException;
+import pl.hetman.wiktoria.solvd.exceptions.InsuranceException;
+import pl.hetman.wiktoria.solvd.exceptions.ShopException;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
+import pl.hetman.wiktoria.solvd.logs.FileLogger;
+import pl.hetman.wiktoria.solvd.carrental.rent.CarRentalModel;
 
 public class CarRentalShop extends CarRentalOffer implements IShop {
 
@@ -24,22 +30,50 @@ public class CarRentalShop extends CarRentalOffer implements IShop {
 
 
     @Override
-    public void addToBasket(CarModel carModel, InsuranceModel insuranceModel) {
+    public boolean addToBasket(CarModel carModel, InsuranceModel insuranceModel) throws CarRentalException {
         chooseOffer();
+        boolean addedToBasket = false;
+        if(carModel==null){
+            CarException carException = new CarException("Problem with car while adding to basket" + "\n");
+            FileLogger.logToFile(carException.getMessage());
+            throw carException;
+        } else if(insuranceModel==null){
+            InsuranceException insuranceException = new InsuranceException("Problem with insurance while adding to basket" + "\n");
+            FileLogger.logToFile(insuranceException.getMessage());
+            throw insuranceException;
+        }
         chooseOffer(carModel, insuranceModel);
+        addedToBasket=true;
+        return addedToBasket;
     }
 
     @Override
-    public void removeFromBasket() {
+    public boolean removeFromBasket(CarModel carModel, InsuranceModel insuranceModel)throws CarRentalException{
+        boolean removedFromBasket = false;
+        if(carModel==null||insuranceModel==null){
+            ShopException cannotRemoveFromBasket = new ShopException("Cannot remove from basket");
+            FileLogger.logToFile(cannotRemoveFromBasket.getMessage());
+            throw cannotRemoveFromBasket;
+        }
 
-        System.out.println("Remove chosen offer from basket");
+        removedFromBasket = true;
+        System.out.println("Removed chosen offer from basket");
+        return removedFromBasket;
 
     }
 
     @Override
-    public void finishShopping() {
+    public boolean finishShopping(CarRentalModel carRentalModel)throws ShopException {
 
-        System.out.println("Finish your purchase");
+        boolean finishedShopping = false;
+        if(carRentalModel==null){
+            ShopException cannotRemoveFromBasket = new ShopException("Cannot remove from basket");
+            FileLogger.logToFile(cannotRemoveFromBasket.getMessage());
+            throw cannotRemoveFromBasket;
+        }
+        finishedShopping = true;
+        System.out.println("You finished your purchase");
+        return finishedShopping;
 
     }
 

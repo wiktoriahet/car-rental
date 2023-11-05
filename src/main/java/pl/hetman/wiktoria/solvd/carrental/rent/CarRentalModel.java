@@ -1,4 +1,4 @@
-package pl.hetman.wiktoria.solvd.rent;
+package pl.hetman.wiktoria.solvd.carrental.rent;
 
 import pl.hetman.wiktoria.solvd.car.CarModel;
 import pl.hetman.wiktoria.solvd.exceptions.CarException;
@@ -6,8 +6,6 @@ import pl.hetman.wiktoria.solvd.exceptions.CarRentalException;
 import pl.hetman.wiktoria.solvd.exceptions.InsuranceException;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 import pl.hetman.wiktoria.solvd.logs.FileLogger;
-
-import java.util.Optional;
 
 public class CarRentalModel implements IRental {
 

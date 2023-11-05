@@ -1,5 +1,8 @@
 package pl.hetman.wiktoria.solvd.person;
 
+import pl.hetman.wiktoria.solvd.exceptions.PersonException;
+import pl.hetman.wiktoria.solvd.logs.FileLogger;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -11,7 +14,7 @@ public class Employee extends PersonModel {
     private String department;
     private List<Customer> customers;
 
-    public Employee(Long id, String name, String surname, String department, List<Customer> customers) {
+    public Employee(Long id, String name, String surname, String department, List<Customer> customers)throws PersonException {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -21,8 +24,12 @@ public class Employee extends PersonModel {
     }
 
     @Override
-    void printInformation() {
-
+    void printInformation() throws PersonException {
+        if(id==null){
+            PersonException personException = new PersonException("Employee doesn't exist");
+            FileLogger.logToFile(personException.getMessage());
+            throw personException;
+        }
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
                 .append("Employee ID: " + id)

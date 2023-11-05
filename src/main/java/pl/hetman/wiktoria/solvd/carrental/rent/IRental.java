@@ -1,4 +1,4 @@
-package pl.hetman.wiktoria.solvd.rent;
+package pl.hetman.wiktoria.solvd.carrental.rent;
 
 import pl.hetman.wiktoria.solvd.car.CarModel;
 import pl.hetman.wiktoria.solvd.exceptions.CarRentalException;

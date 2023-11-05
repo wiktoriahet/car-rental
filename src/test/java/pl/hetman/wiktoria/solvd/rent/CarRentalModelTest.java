@@ -4,12 +4,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pl.hetman.wiktoria.solvd.car.CarModel;
 import pl.hetman.wiktoria.solvd.car.EconomyCar;
-import pl.hetman.wiktoria.solvd.car.SuvCar;
+import pl.hetman.wiktoria.solvd.carrental.rent.CarRentalModel;
 import pl.hetman.wiktoria.solvd.exceptions.CarRentalException;
 import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarRentalModelTest {
 
