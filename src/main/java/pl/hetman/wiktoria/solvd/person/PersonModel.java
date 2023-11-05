@@ -4,8 +4,8 @@ public abstract class PersonModel implements IPerson {
 
     void printInformation(){}
 
-    @Override
-    public void createAPerson() {
-
-    }
+//    @Override
+//    public void createAPerson() {
+//
+//    }
 }

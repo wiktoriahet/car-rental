@@ -38,11 +38,6 @@ public class Customer extends PersonModel {
 
     }
 
-    @Override
-    public void createAPerson() {
-        System.out.println("Create a customer");
-    }
-
     public Long getId() {
         return id;
     }

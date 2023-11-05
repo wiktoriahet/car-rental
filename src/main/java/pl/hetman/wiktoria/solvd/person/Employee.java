@@ -37,12 +37,6 @@ public class Employee extends PersonModel {
 
     }
 
-    @Override
-    public void createAPerson() {
-        System.out.println("Create an employee");
-    }
-
-
     public Long getId() {
         return id;
     }
