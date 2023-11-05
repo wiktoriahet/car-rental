@@ -29,11 +29,13 @@ public class CarRentalModel implements IRental {
         boolean rented = false;
 
         if(insuranceModel==null){
-            InsuranceException insuranceException = new InsuranceException("Problem with insurance while renting a car");
+            InsuranceException insuranceException = new InsuranceException("Problem with insurance while renting a car" + "\n");
             FileLogger.logToFile(insuranceException.getMessage());
             throw insuranceException;
         } else if(carModel==null){
-            throw new CarException("Problem with car while renting a car");
+            CarException carException = new CarException("Problem with car while renting a car" + "\n");
+            FileLogger.logToFile(carException.getMessage());
+            throw carException;
         }
         stringBuilder
                 .append("Car " + carModel.getId() + " rented for " + days + "day(s)")
