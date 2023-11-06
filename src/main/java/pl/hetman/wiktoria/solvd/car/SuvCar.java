@@ -15,29 +15,29 @@ public class SuvCar extends CarModel {
 
     static {
         count = 0;
-        System.out.println("Suv car static block");
+        LOGGER.info("Suv car static block");
     }
 
     public SuvCar(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay, boolean fullSize, boolean fourWheelDrive, boolean premium) {
         super(id, carModelName, airConditioning, spareTire, feePerDay);
-        LOGGER.always().log("SuvCar("+id+", "+carModelName+", "+airConditioning+", "+spareTire+", "+feePerDay+", "+fullSize+", "+fourWheelDrive+", "+premium+")");
+        LOGGER.info("SuvCar("+id+", "+carModelName+", "+airConditioning+", "+spareTire+", "+feePerDay+", "+fullSize+", "+fourWheelDrive+", "+premium+")");
         this.fullSize = fullSize;
         this.fourWheelDrive = fourWheelDrive;
         this.premium = premium;
         count++;
-        LOGGER.always().log("SuvCar(...)");
+        LOGGER.info("SuvCar(...)");
     }
 
     public static void displayCount(){
-        LOGGER.always().log("displayCount()");
+        LOGGER.info("displayCount()");
         System.out.println("Suv cars in use: " + count);
-        LOGGER.always().log("displayCount(...)");
+        LOGGER.info("displayCount(...)");
     }
 
     @Override
     public boolean displayInformation() {
         super.displayInformation();
-        LOGGER.always().log("displayInformation()");
+        LOGGER.info("displayInformation()");
         boolean informationDisplayed = true;
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
@@ -47,7 +47,7 @@ public class SuvCar extends CarModel {
                 .append("\n")
                 .append("Full size: " + fullSize);
         System.out.println(stringBuilder);
-        LOGGER.always().log("displayInformation(...)");
+        LOGGER.info("displayInformation(...)");
         return informationDisplayed;
     }
 

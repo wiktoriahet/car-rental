@@ -17,21 +17,21 @@ public class InsuranceModel implements IInsurance {
     private double price;
 
     public InsuranceModel(Long id, String packageName, boolean theftInsurance, boolean accidentsInsurance, boolean destructionInsurance, double price) {
-        LOGGER.always().log("InsuranceModel()");
+        LOGGER.info("InsuranceModel()");
         this.id = id;
         this.packageName = packageName;
         this.theftInsurance = theftInsurance;
         this.accidentsInsurance = accidentsInsurance;
         this.destructionInsurance = destructionInsurance;
         this.price = price;
-        LOGGER.always().log("InsuranceModel(...)");
+        LOGGER.info("InsuranceModel(...)");
     }
 
     @Override
     public String chooseInsurance(String packageName) {
-        LOGGER.always().log("chooseInsurance("+packageName+")");
+        LOGGER.info("chooseInsurance("+packageName+")");
         setPackageName(packageName);
-        LOGGER.always().log("chooseInsurance(...)");
+        LOGGER.info("chooseInsurance(...)");
         return packageName;
     }
 

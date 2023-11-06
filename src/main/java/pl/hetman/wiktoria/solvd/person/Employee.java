@@ -18,19 +18,19 @@ public class Employee extends PersonModel {
     private List<Customer> customers;
 
     public Employee(Long id, String name, String surname, String department, List<Customer> customers)throws PersonException {
-        LOGGER.always().log("Employee("+id+", "+name+", "+surname+", "+department+", "+customers+")");
+        LOGGER.info("Employee("+id+", "+name+", "+surname+", "+department+", "+customers+")");
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.department = department;
         this.customers = customers;
         printInformation();
-        LOGGER.always().log("Employee(...)");
+        LOGGER.info("Employee(...)");
     }
 
     @Override
     void printInformation() throws PersonException {
-        LOGGER.always().log("printInformation()");
+        LOGGER.info("printInformation()");
         if(id==null){
             PersonException personException = new PersonException("Employee doesn't exist");
             FileLogger.logToFile(personException.getMessage());
@@ -48,7 +48,7 @@ public class Employee extends PersonModel {
                 .append("Customers: " + customers.toString());
 
         System.out.println(stringBuilder);
-        LOGGER.always().log("printInformation(...)");
+        LOGGER.info("printInformation(...)");
 
     }
 

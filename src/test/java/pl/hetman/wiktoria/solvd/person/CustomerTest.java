@@ -11,6 +11,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerTest {
 
+    static{
+        System.setProperty("log4j.configurationFile","log4j2.xml");
+    }
+
     @Test
     void customer() throws PersonException {
         //given

@@ -20,19 +20,19 @@ public class Customer extends PersonModel {
     private CarModel carModel;
 
     public Customer(Long id, String name, String surname, InsuranceModel insuranceModel, CarModel carModel) throws PersonException{
-        LOGGER.always().log("Customer("+id+", "+name+", "+surname+", "+insuranceModel+", "+carModel+")");
+        LOGGER.info("Customer("+id+", "+name+", "+surname+", "+insuranceModel+", "+carModel+")");
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.insuranceModel = insuranceModel;
         this.carModel = carModel;
         printInformation();
-        LOGGER.always().log("Customer(...)");
+        LOGGER.info("Customer(...)");
     }
 
     @Override
     void printInformation() throws PersonException {
-        LOGGER.always().log("printInformation()");
+        LOGGER.info("printInformation()");
         if(id==null){
             PersonException personException = new PersonException("Customer doesn't exist");
             FileLogger.logToFile(personException.getMessage());
@@ -50,7 +50,7 @@ public class Customer extends PersonModel {
                 .append("Car id and name: " + carModel.getId() + " " + carModel.getCarModelName());
 
         System.out.println(stringBuilder);
-        LOGGER.always().log("printInformation(...)");
+        LOGGER.info("printInformation(...)");
     }
 
     public Long getId() {

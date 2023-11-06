@@ -10,10 +10,10 @@ public class UniqueIdGenerator {
     private static final Logger LOGGER = LogManager.getLogger(UniqueIdGenerator.class);
 
     public static Long generateId(){
-        LOGGER.always().log("generateId()");
+        LOGGER.info("generateId()");
         Random random = new Random();
         long id = random.nextLong(1_000_000L);
-        LOGGER.always().log("generateId(...)");
+        LOGGER.info("generateId(...)");
         return id;
     }
 }
