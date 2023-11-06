@@ -13,7 +13,7 @@ public class CarRentalOffer implements IOffer {
 
     @Override
     public final void printOffer() {
-        LOGGER.always().log("printOffer()");
+        LOGGER.info("printOffer()");
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
@@ -22,7 +22,7 @@ public class CarRentalOffer implements IOffer {
                 .append("Insurance packages available: Basic, Premium, Deluxe");
 
         System.out.println(stringBuilder);
-        LOGGER.always().log("printOffer(...)");
+        LOGGER.info("printOffer(...)");
     }
 
 }

@@ -9,6 +9,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CarModelTest {
 
+    static{
+        System.setProperty("log4j.configurationFile","log4j2.xml");
+    }
+
     @Test
     void displayInformation() {
         //given

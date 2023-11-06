@@ -13,6 +13,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CarRentalShopTest {
 
+    static{
+        System.setProperty("log4j.configurationFile","log4j2.xml");
+    }
+
     @Test
     void addToBasket() {
         //given

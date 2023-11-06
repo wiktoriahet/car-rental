@@ -16,13 +16,13 @@ public class CarModel implements ICar {
     double feePerDay;
 
     public CarModel(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay) {
-        LOGGER.always().log("CarModel("+id+", "+carModelName+", "+spareTire+", "+feePerDay+")");
+        LOGGER.info("CarModel("+id+", "+carModelName+", "+spareTire+", "+feePerDay+")");
         this.id = id;
         this.carModelName = carModelName;
         this.airConditioning = airConditioning;
         this.spareTire = spareTire;
         this.feePerDay = feePerDay;
-        LOGGER.always().log("CarModel(...)");
+        LOGGER.info("CarModel(...)");
 
     }
 
@@ -30,7 +30,7 @@ public class CarModel implements ICar {
     public boolean displayInformation() {
 
         //LOGGER.info("displayInformation()");
-        LOGGER.always().log("displayInformation()");
+        LOGGER.info("displayInformation()");
         boolean informationDisplayed = true;
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -44,8 +44,7 @@ public class CarModel implements ICar {
                 .append("Fee per day: " + feePerDay);
 
         System.out.println(stringBuilder);
-        //LOGGER.info("displayInformation(...)");
-        LOGGER.always().log("displayInformation(...)");
+        LOGGER.info("displayInformation(...)");
         return informationDisplayed;
 
     }

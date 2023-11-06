@@ -3,6 +3,7 @@ package pl.hetman.wiktoria.solvd;
 import pl.hetman.wiktoria.solvd.car.CarModel;
 import pl.hetman.wiktoria.solvd.car.SuvCar;
 import pl.hetman.wiktoria.solvd.carrental.CarRentalOffer;
+import pl.hetman.wiktoria.solvd.exceptions.PersonException;
 import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 import pl.hetman.wiktoria.solvd.person.Customer;
@@ -12,33 +13,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
 
-//        CarRentalOffer carRentalOffer = new CarRentalOffer();
-//        carRentalOffer.printOffer();
-//
-//        List<Customer> customers = new ArrayList<>();
-//
-//        InsuranceModel insuranceDeluxe = new InsuranceModel(UniqueIdGenerator.generateId(), "Deluxe", true, true, true, 300);
-//        InsuranceModel insuranceBasic = new InsuranceModel(UniqueIdGenerator.generateId(), "Basic", false, true, false, 100);
-//
-//        SuvCar suvCarOne = new SuvCar(UniqueIdGenerator.generateId(), "tuareg", true, true, 650, insuranceDeluxe, true, true, true);
-//
-//        suvCarOne.displayInformation();
-//
-//        CarModel suvCarTwo = new SuvCar(UniqueIdGenerator.generateId(), "tuareg", false, true, 650, insuranceDeluxe, true, true, true);
-//        suvCarTwo.displayInformation();
-//
-//        SuvCar.displayCount();
-//
-//        Customer customerJanKowalski = new Customer(UniqueIdGenerator.generateId(), "Jan", "Kowalski", insuranceDeluxe, suvCarOne);
-//        customers.add(customerJanKowalski);
-//
-//        Customer customerAdamAdamski = new Customer(UniqueIdGenerator.generateId(), "Adam", "Adamski", insuranceBasic, suvCarTwo);
-//        customers.add(customerAdamAdamski);
-//
-//
-//        Employee employeeAnnaNowak = new Employee(UniqueIdGenerator.generateId(), "Anna", "Nowak", "Paris", customers);
-//
+    static{
+        System.setProperty("log4j.configurationFile","log4j2.xml");
+    }
+
+    public static void main(String[] args) throws PersonException {
+
+        CarRentalOffer carRentalOffer = new CarRentalOffer();
+        carRentalOffer.printOffer();
+
+        List<Customer> customers = new ArrayList<>();
+
+        InsuranceModel insuranceDeluxe = new InsuranceModel(UniqueIdGenerator.generateId(), "Deluxe", true, true, true, 300);
+        InsuranceModel insuranceBasic = new InsuranceModel(UniqueIdGenerator.generateId(), "Basic", false, true, false, 100);
+
+        SuvCar suvCarOne = new SuvCar(UniqueIdGenerator.generateId(), "tuareg", true, true, 650, true, true, true);
+
+        suvCarOne.displayInformation();
+
+        CarModel suvCarTwo = new SuvCar(UniqueIdGenerator.generateId(), "tuareg", false, true, 650, true, true, true);
+        suvCarTwo.displayInformation();
+
+        SuvCar.displayCount();
+
+        Customer customerJanKowalski = new Customer(UniqueIdGenerator.generateId(), "Jan", "Kowalski", insuranceDeluxe, suvCarOne);
+        customers.add(customerJanKowalski);
+
+        Customer customerAdamAdamski = new Customer(UniqueIdGenerator.generateId(), "Adam", "Adamski", insuranceBasic, suvCarTwo);
+        customers.add(customerAdamAdamski);
+
+
+        Employee employeeAnnaNowak = new Employee(UniqueIdGenerator.generateId(), "Anna", "Nowak", "Paris", customers);
+
     }
 }

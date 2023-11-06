@@ -18,12 +18,12 @@ public class CarRentalShop extends CarRentalOffer implements IShop {
     private final String carRentalName = "Car Rental Service";
 
     private void chooseOffer(){
-        LOGGER.always().log("chooseOffer()");
+        LOGGER.info("chooseOffer()");
         System.out.println("Choose offer");
-        LOGGER.always().log("chooseOffer(...)");
+        LOGGER.info("chooseOffer(...)");
     }
     private void chooseOffer(CarModel carModel, InsuranceModel insuranceModel){
-        LOGGER.always().log("chooseOffer("+carModel+", "+insuranceModel+")");
+        LOGGER.info("chooseOffer("+carModel+", "+insuranceModel+")");
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
                 .append("Confirm chosen offer: ")
@@ -33,13 +33,13 @@ public class CarRentalShop extends CarRentalOffer implements IShop {
                 .append("Insurance: " + insuranceModel.getPackageName());
 
         System.out.println(stringBuilder);
-        LOGGER.always().log("chooseOffer(...)");
+        LOGGER.info("chooseOffer(...)");
     }
 
 
     @Override
     public boolean addToBasket(CarModel carModel, InsuranceModel insuranceModel) throws CarRentalException {
-        LOGGER.always().log("addToBasket("+carModel+", "+insuranceModel+")");
+        LOGGER.info("addToBasket("+carModel+", "+insuranceModel+")");
         chooseOffer();
         boolean addedToBasket = false;
         if(carModel==null){
@@ -55,13 +55,13 @@ public class CarRentalShop extends CarRentalOffer implements IShop {
         }
         chooseOffer(carModel, insuranceModel);
         addedToBasket=true;
-        LOGGER.always().log("addToBasket(...)");
+        LOGGER.info("addToBasket(...)");
         return addedToBasket;
     }
 
     @Override
     public boolean removeFromBasket(CarModel carModel, InsuranceModel insuranceModel)throws CarRentalException{
-        LOGGER.always().log("removeFromBasket("+carModel+", "+insuranceModel+")");
+        LOGGER.info("removeFromBasket("+carModel+", "+insuranceModel+")");
         boolean removedFromBasket = false;
         if(carModel==null||insuranceModel==null){
             ShopException cannotRemoveFromBasket = new ShopException("Cannot remove from basket");
@@ -71,14 +71,14 @@ public class CarRentalShop extends CarRentalOffer implements IShop {
         }
         removedFromBasket = true;
         System.out.println("Removed chosen offer from basket");
-        LOGGER.always().log("removeFromBasket(...)");
+        LOGGER.info("removeFromBasket(...)");
         return removedFromBasket;
 
     }
 
     @Override
     public boolean finishShopping(CarRentalModel carRentalModel)throws ShopException {
-        LOGGER.always().log("finishShopping("+carRentalModel+")");
+        LOGGER.info("finishShopping("+carRentalModel+")");
         boolean finishedShopping = false;
         if(carRentalModel==null){
             ShopException cannotRemoveFromBasket = new ShopException("Cannot remove from basket");
@@ -88,7 +88,7 @@ public class CarRentalShop extends CarRentalOffer implements IShop {
         }
         finishedShopping = true;
         System.out.println("You finished your purchase");
-        LOGGER.always().log("finishShopping(...)");
+        LOGGER.info("finishShopping(...)");
         return finishedShopping;
 
     }

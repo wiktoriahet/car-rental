@@ -11,6 +11,10 @@ import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 
 class CarRentalModelTest {
 
+    static{
+        System.setProperty("log4j.configurationFile","log4j2.xml");
+    }
+
     @Test
     void rentACar() throws CarRentalException {
         //given

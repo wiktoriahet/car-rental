@@ -19,17 +19,17 @@ public class CarRentalModel implements IRental {
     private InsuranceModel insuranceModel;
 
     public CarRentalModel(Long id, int days, CarModel carModel, InsuranceModel insuranceModel) {
-        LOGGER.always().log("CarRentalModel("+id+", "+days+", "+carModel+", "+insuranceModel+")");
+        LOGGER.info("CarRentalModel("+id+", "+days+", "+carModel+", "+insuranceModel+")");
         this.id = id;
         this.days = days;
         this.carModel = carModel;
         this.insuranceModel = insuranceModel;
-        LOGGER.always().log("CarRentalModel(...)");
+        LOGGER.info("CarRentalModel(...)");
     }
 
     @Override
     public boolean rentACar(CarModel carModel, InsuranceModel insuranceModel) throws CarRentalException{
-        LOGGER.always().log("rentACar("+carModel+", "+insuranceModel+")");
+        LOGGER.info("rentACar("+carModel+", "+insuranceModel+")");
         StringBuilder stringBuilder = new StringBuilder();
         boolean rented = false;
 
@@ -51,16 +51,16 @@ public class CarRentalModel implements IRental {
 
         rented = true;
         System.out.println(stringBuilder);
-        LOGGER.always().log("rentACar(...)");
+        LOGGER.info("rentACar(...)");
         return rented;
     }
 
     @Override
     public double getPrice(CarModel carModel, InsuranceModel insuranceModel) {
-        LOGGER.always().log("getPrice("+carModel+", "+insuranceModel+")");
+        LOGGER.info("getPrice("+carModel+", "+insuranceModel+")");
         double priceOfInsurance = insuranceModel.getPrice();
         double priceInTotal = priceOfInsurance + (days * carModel.getFeePerDay());
-        LOGGER.always().log("getPrice(...)");
+        LOGGER.info("getPrice(...)");
         return priceInTotal;
     }
 
