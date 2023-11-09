@@ -4,6 +4,7 @@ import pl.hetman.wiktoria.solvd.car.CarModel;
 import pl.hetman.wiktoria.solvd.car.SedanCar;
 import pl.hetman.wiktoria.solvd.car.SuvCar;
 import pl.hetman.wiktoria.solvd.carrental.CarRentalOffer;
+import pl.hetman.wiktoria.solvd.company.CompanyStructure;
 import pl.hetman.wiktoria.solvd.company.Department;
 import pl.hetman.wiktoria.solvd.exceptions.PersonException;
 import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
@@ -62,23 +63,23 @@ public class Main {
         Employee employeeJanKochanowski = new Employee(UniqueIdGenerator.generateId(), "Jan", "Kochanowski", customers);
         Employee employeeBoleslawPrus = new Employee(UniqueIdGenerator.generateId(), "Boleslaw", "Prus", customers);
 
-        Department departmentParis = new Department();
-        Department departmentBerlin = new Department();
-        Department departmentLondon = new Department();
+        Department departmentParis = new Department("Paris department");
+        Department departmentBerlin = new Department("Paris department");
+        Department departmentLondon = new Department("Berlin department");
 
-//        CompanyStructure companyStructure = new CompanyStructure();
-//
-//        companyStructure.addToCompanyStructure(departmentParis, employeeAnnaNowak);
-//        companyStructure.addToCompanyStructure(departmentParis, employeeBeataKowalska);
-//        companyStructure.addToCompanyStructure(departmentParis, employeeTomTomski);
-//
-//        companyStructure.addToCompanyStructure(departmentBerlin, employeeJanNowak);
-//        companyStructure.addToCompanyStructure(departmentBerlin, employeeAdamMickiewicz);
-//
-//        companyStructure.addToCompanyStructure(departmentLondon, employeeJanKochanowski);
-//        companyStructure.addToCompanyStructure(departmentLondon, employeeBoleslawPrus);
+        CompanyStructure companyStructure = new CompanyStructure();
 
-        //companyStructure.printCompanyStructure();
+        companyStructure.addToCompanyStructure(employeeAnnaNowak, departmentParis);
+        companyStructure.addToCompanyStructure(employeeBeataKowalska, departmentParis);
+        companyStructure.addToCompanyStructure(employeeTomTomski, departmentParis);
+
+        companyStructure.addToCompanyStructure(employeeJanNowak, departmentBerlin);
+        companyStructure.addToCompanyStructure(employeeAdamMickiewicz,departmentBerlin);
+
+        companyStructure.addToCompanyStructure(employeeJanKochanowski, departmentLondon);
+        companyStructure.addToCompanyStructure(employeeBoleslawPrus, departmentLondon);
+
+        companyStructure.printCompanyStructure();
 
 
     }

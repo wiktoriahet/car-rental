@@ -10,7 +10,8 @@ public class Department {
     private String departmentName;
     private List<Employee> employees;
 
-    public Department() {
+    public Department(String departmentName) {
+        this.departmentName = departmentName;
     }
 
     public Department(Long id, String departmentName, List<Employee> employees) {
