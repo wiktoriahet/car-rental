@@ -4,10 +4,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 
+import java.util.List;
+
 public class EconomyCar extends CarModel {
 
     private static final Logger LOGGER = LogManager.getLogger(EconomyCar.class);
-
 
     static int count;
 
