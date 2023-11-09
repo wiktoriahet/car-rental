@@ -9,8 +9,6 @@ import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 import pl.hetman.wiktoria.solvd.logs.FileLogger;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class CarRentalShopTest {
 
     static{

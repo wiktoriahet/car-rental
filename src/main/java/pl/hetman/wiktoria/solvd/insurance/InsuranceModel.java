@@ -2,7 +2,6 @@ package pl.hetman.wiktoria.solvd.insurance;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import pl.hetman.wiktoria.solvd.carrental.CarRentalShop;
 
 import java.util.Objects;
 

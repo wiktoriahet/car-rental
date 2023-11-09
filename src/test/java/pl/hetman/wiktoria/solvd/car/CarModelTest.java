@@ -3,9 +3,6 @@ package pl.hetman.wiktoria.solvd.car;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
-import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarModelTest {
 

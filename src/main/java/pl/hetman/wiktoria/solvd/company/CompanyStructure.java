@@ -12,10 +12,17 @@ import java.util.Objects;
 public class CompanyStructure {
     private static final Logger LOGGER = LogManager.getLogger(CarRentalModel.class);
 
-    private Map<Long, String> companyStructure = new HashMap<>();
+    private Map<Long, String> companyStructure;
 
     public CompanyStructure() {
         LOGGER.info("CompanyStructure()");
+        this.companyStructure = new HashMap<>();
+        LOGGER.info("CompanyStructure(...)");
+    }
+
+    public CompanyStructure(Map<Long, String> companyStructure) {
+        LOGGER.info("CompanyStructure("+companyStructure+")");
+        this.companyStructure = companyStructure;
         LOGGER.info("CompanyStructure(...)");
     }
 

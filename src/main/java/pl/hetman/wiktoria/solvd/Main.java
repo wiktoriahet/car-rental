@@ -1,5 +1,6 @@
 package pl.hetman.wiktoria.solvd;
 
+import pl.hetman.wiktoria.solvd.car.CarList;
 import pl.hetman.wiktoria.solvd.car.CarModel;
 import pl.hetman.wiktoria.solvd.car.SedanCar;
 import pl.hetman.wiktoria.solvd.car.SuvCar;
@@ -23,7 +24,6 @@ public class Main {
     }
 
     public static void main(String[] args) throws PersonException {
-
 
         List<CarModel> existingCars = new ArrayList<>();
 
@@ -55,6 +55,10 @@ public class Main {
         CarModel sedanCar = new SedanCar(UniqueIdGenerator.generateId(), "Fiat", true, true, 400, false);
         existingCars.add(sedanCar);
 
+        CarList carList = new CarList(existingCars);
+
+        carList.printCarList();
+
 
         Employee employeeAnnaNowak = new Employee(UniqueIdGenerator.generateId(), "Anna", "Nowak", customers);
         Employee employeeBeataKowalska = new Employee(UniqueIdGenerator.generateId(), "Beata", "Kowalska", customers);
@@ -82,12 +86,12 @@ public class Main {
 
         companyStructure.printCompanyStructure();
 
-        GenericLinkedList<Employee> employeeGenericLinkedList = new GenericLinkedList<>();
-        GenericLinkedList.insert(employeeGenericLinkedList, employeeAdamMickiewicz);
-        GenericLinkedList.insert(employeeGenericLinkedList, employeeJanKochanowski);
-        GenericLinkedList.insert(employeeGenericLinkedList, employeeBoleslawPrus);
-        GenericLinkedList.insert(employeeGenericLinkedList, employeeJanNowak);
-        GenericLinkedList.printList(employeeGenericLinkedList);
+//        GenericLinkedList<Employee> employeeGenericLinkedList = new GenericLinkedList<>();
+//        GenericLinkedList.insert(employeeGenericLinkedList, employeeAdamMickiewicz);
+//        GenericLinkedList.insert(employeeGenericLinkedList, employeeJanKochanowski);
+//        GenericLinkedList.insert(employeeGenericLinkedList, employeeBoleslawPrus);
+//        GenericLinkedList.insert(employeeGenericLinkedList, employeeJanNowak);
+//        GenericLinkedList.printList(employeeGenericLinkedList);
 
 
     }

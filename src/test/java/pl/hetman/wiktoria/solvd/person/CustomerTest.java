@@ -7,8 +7,6 @@ import pl.hetman.wiktoria.solvd.exceptions.PersonException;
 import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class CustomerTest {
 
     static{

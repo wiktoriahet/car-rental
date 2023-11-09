@@ -1,23 +1,27 @@
 package pl.hetman.wiktoria.solvd.company;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import pl.hetman.wiktoria.solvd.car.CarList;
 import pl.hetman.wiktoria.solvd.person.Employee;
 
 import java.util.List;
 
 public class Department {
+    private static final Logger LOGGER = LogManager.getLogger(Department.class);
 
     private Long id;
     private String departmentName;
-    private List<Employee> employees;
 
     public Department(String departmentName) {
+        LOGGER.info("Department()");
         this.departmentName = departmentName;
+        LOGGER.info("Department(...)");
     }
 
-    public Department(Long id, String departmentName, List<Employee> employees) {
+    public Department(Long id, String departmentName) {
         this.id = id;
         this.departmentName = departmentName;
-        this.employees = employees;
     }
 
     public Long getId() {
@@ -36,20 +40,11 @@ public class Department {
         this.departmentName = departmentName;
     }
 
-    public List<Employee> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
-    }
-
     @Override
     public String toString() {
         return "Department{" +
                 "id=" + id +
                 ", departmentName='" + departmentName + '\'' +
-                ", employees=" + employees +
                 '}';
     }
 }

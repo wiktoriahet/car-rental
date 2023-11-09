@@ -3,7 +3,6 @@ package pl.hetman.wiktoria.solvd.person;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.hetman.wiktoria.solvd.car.CarModel;
-import pl.hetman.wiktoria.solvd.carrental.CarRentalShop;
 import pl.hetman.wiktoria.solvd.exceptions.PersonException;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 import pl.hetman.wiktoria.solvd.logs.FileLogger;
