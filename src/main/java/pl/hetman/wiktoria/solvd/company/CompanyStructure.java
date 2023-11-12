@@ -3,6 +3,9 @@ package pl.hetman.wiktoria.solvd.company;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.hetman.wiktoria.solvd.carrental.rent.CarRentalModel;
+import pl.hetman.wiktoria.solvd.exceptions.DepartmentException;
+import pl.hetman.wiktoria.solvd.exceptions.PersonException;
+import pl.hetman.wiktoria.solvd.logs.FileLogger;
 import pl.hetman.wiktoria.solvd.person.Employee;
 
 import java.util.HashMap;
@@ -26,11 +29,20 @@ public class CompanyStructure {
         LOGGER.info("CompanyStructure(...)");
     }
 
-    public void addToCompanyStructure(Employee employee, Department department){
+    public void addToCompanyStructure(Employee employee, Department department) throws PersonException, DepartmentException {
         LOGGER.info("addToCompanyStructure()");
-
+        if(employee == null){
+            PersonException personException = new PersonException("Employee doesn't exist");
+            FileLogger.logToFile(personException.getMessage());
+            LOGGER.error(personException.getMessage());
+            throw personException;
+        } else if(department == null){
+            DepartmentException departmentException = new DepartmentException("Department doesn't exist");
+            FileLogger.logToFile(departmentException.getMessage());
+            LOGGER.error(departmentException.getMessage());
+            throw departmentException;
+        }
         companyStructure.put(employee.getId(), department.getDepartmentName());
-
         LOGGER.info("addToCompanyStructure(...)");
     }
 
