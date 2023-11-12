@@ -2,6 +2,7 @@ package pl.hetman.wiktoria.solvd;
 
 import pl.hetman.wiktoria.solvd.car.CarList;
 import pl.hetman.wiktoria.solvd.car.CarModel;
+import pl.hetman.wiktoria.solvd.car.EconomyCar;
 import pl.hetman.wiktoria.solvd.car.SedanCar;
 import pl.hetman.wiktoria.solvd.car.SuvCar;
 import pl.hetman.wiktoria.solvd.carrental.CarRentalOffer;
@@ -45,6 +46,9 @@ public class Main {
         existingCars.add(suvCarTwo);
 
         SuvCar.displayCount();
+
+        CarModel economyCar = new EconomyCar(UniqueIdGenerator.generateId(), "Fiat", true, false, 400);
+        System.out.println("Created economy car: " + economyCar.toString());
 
         Customer customerJanKowalski = new Customer(UniqueIdGenerator.generateId(), "Jan", "Kowalski", insuranceDeluxe, suvCarOne);
         customers.add(customerJanKowalski);
