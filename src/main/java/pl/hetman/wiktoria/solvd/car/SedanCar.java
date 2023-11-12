@@ -32,14 +32,12 @@ public class SedanCar extends CarModel {
 
     @Override
     public boolean displayInformation() {
-        LOGGER.info("displayInformation()");
-        super.displayInformation();
-        boolean informationDisplayed = true;
+        LOGGER.info("Displaying information for SedanCar");
+        boolean informationDisplayed = super.displayInformation();
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
                 .append("Premium car: " + premium);
-        System.out.println(stringBuilder);
-        LOGGER.info("displayInformation(...)");
+        LOGGER.info(stringBuilder.toString());
         return informationDisplayed;
     }
 
