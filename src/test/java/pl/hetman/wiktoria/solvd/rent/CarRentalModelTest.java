@@ -16,7 +16,7 @@ class CarRentalModelTest {
     }
 
     @Test
-    void rentACar() throws CarRentalException {
+    void validateRentCar() throws CarRentalException {
         //given
         //InsuranceModel insuranceModel = new InsuranceModel(UniqueIdGenerator.generateId(), "Premium", true, true, true, 200);
         InsuranceModel insuranceModel = null;
