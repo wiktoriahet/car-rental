@@ -28,7 +28,7 @@ class CarRentalModelTest {
         boolean rentedCar = carRentalModel.rentACar(carModel, insuranceModel);
 
         //then
-        Assertions.assertEquals(true, rentedCar);
+        Assertions.assertTrue(rentedCar, "Car should be rented successfully");
 
     }
 }
