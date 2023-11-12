@@ -77,7 +77,7 @@ public class SuvCar extends CarModel {
     @Override
     public String toString() {
         return "SuvCar{" + '\'' +
-                SuvCar.super.toString() + '\'' +
+                super.toString() + '\'' +
                 "fullSize=" + fullSize +
                 ", fourWheelDrive=" + fourWheelDrive +
                 ", premium=" + premium +

@@ -49,6 +49,7 @@ public class Main {
 
         CarModel economyCar = new EconomyCar(UniqueIdGenerator.generateId(), "Fiat", true, false, 400);
         System.out.println("Created economy car: " + economyCar.toString());
+        economyCar.displayInformation();
 
         Customer customerJanKowalski = new Customer(UniqueIdGenerator.generateId(), "Jan", "Kowalski", insuranceDeluxe, suvCarOne);
         customers.add(customerJanKowalski);
@@ -58,6 +59,7 @@ public class Main {
 
         CarModel sedanCar = new SedanCar(UniqueIdGenerator.generateId(), "Fiat", true, true, 400, false);
         existingCars.add(sedanCar);
+        sedanCar.displayInformation();
 
         CarList carList = new CarList(existingCars);
 

@@ -54,7 +54,7 @@ public class SedanCar extends CarModel {
     @Override
     public String toString() {
         return "SedanCar{" + '\'' +
-                SedanCar.super.toString() + '\'' +
+                super.toString() + '\'' +
                 "premium=" + premium +
                 '}';
     }
