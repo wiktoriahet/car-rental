@@ -30,7 +30,7 @@ class CarRentalShopTest {
         }
 
         //then
-        Assertions.assertEquals(true, addedToBasket);
+        Assertions.assertTrue(addedToBasket, "Car and Insurance added to the basket successfully");
 
     }
 }
