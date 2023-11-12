@@ -30,7 +30,7 @@ class CarRentalShopTest {
         }
 
         //then
-        Assertions.assertTrue(addedToBasket, "Car and Insurance added to the basket successfully");
+        Assertions.assertTrue(addedToBasket, "Car and Insurance couldn't be added to the basket");
 
     }
 }

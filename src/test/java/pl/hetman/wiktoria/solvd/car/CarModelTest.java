@@ -19,7 +19,9 @@ class CarModelTest {
         boolean displayedInformation = carModel.displayInformation();
 
         //then
-        Assertions.assertEquals(true, displayedInformation);
+        //Assertions.assertEquals(true, displayedInformation);
+        Assertions.assertTrue(displayedInformation, "Informations couldn't be displayed");
+
 
     }
 }

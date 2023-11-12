@@ -2,7 +2,6 @@ package pl.hetman.wiktoria.solvd.customlinkedlist;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import pl.hetman.wiktoria.solvd.carrental.rent.CarRentalModel;
 
 public class GenericLinkedList<T> {
     private static final Logger LOGGER = LogManager.getLogger(GenericLinkedList.class);
