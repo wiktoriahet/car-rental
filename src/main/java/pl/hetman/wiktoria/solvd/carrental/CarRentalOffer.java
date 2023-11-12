@@ -7,6 +7,7 @@ import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 
 import java.util.List;
 
+//Generics and collections task
 public class CarRentalOffer implements IOffer {
 
     private static final Logger LOGGER = LogManager.getLogger(CarRentalOffer.class);
@@ -18,8 +19,10 @@ public class CarRentalOffer implements IOffer {
     }
 
     public CarRentalOffer(List<CarModel> existingCars, List<InsuranceModel> insurancePackages) {
+        LOGGER.info("CarRentalOffer()");
         this.existingCars = existingCars;
         this.insurancePackages = insurancePackages;
+        LOGGER.info("CarRentalOffer(...)");
     }
 
     @Override

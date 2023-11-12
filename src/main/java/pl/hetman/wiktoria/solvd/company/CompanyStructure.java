@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+//Generics and collections task
 public class CompanyStructure {
     private static final Logger LOGGER = LogManager.getLogger(CarRentalModel.class);
 

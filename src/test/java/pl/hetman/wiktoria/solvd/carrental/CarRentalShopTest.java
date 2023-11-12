@@ -9,6 +9,9 @@ import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 import pl.hetman.wiktoria.solvd.logs.FileLogger;
 
+import java.util.Objects;
+
+//Generics and collections task
 class CarRentalShopTest {
 
     static{
@@ -21,16 +24,37 @@ class CarRentalShopTest {
         CarRentalShop carRentalShop = new CarRentalShop();
         CarModel carModel = new SuvCar(UniqueIdGenerator.generateId(), "ford", true, false, 300, true, true, true);
         InsuranceModel insuranceModel = new InsuranceModel(UniqueIdGenerator.generateId(), "Deluxe", true, true, true, 400);
-        boolean addedToBasket = false;
+        Basket<Objects> basket = new Basket<>();
+
         //when
         try{
-            addedToBasket = carRentalShop.addToBasket(carModel, insuranceModel);
+            basket = carRentalShop.addToBasket(carModel, insuranceModel);
+            Basket.printList(basket);
         }catch (CarRentalException e){
             FileLogger.logToFile(e.getMessage());
         }
 
         //then
-        Assertions.assertTrue(addedToBasket, "Car and Insurance couldn't be added to the basket");
+        Assertions.assertNotNull(basket, "Basket is null");
+
+    }
+
+    @Test
+    void addToBasketAndRemoveFromBasket() throws CarRentalException{
+        //given
+        CarRentalShop carRentalShop = new CarRentalShop();
+        CarModel carModel = new SuvCar(UniqueIdGenerator.generateId(), "ford", true, false, 300, true, true, true);
+        InsuranceModel insuranceModel = new InsuranceModel(UniqueIdGenerator.generateId(), "Deluxe", true, true, true, 400);
+        Basket<Objects> basket = new Basket<>();
+        basket = carRentalShop.addToBasket(carModel, insuranceModel);
+
+        //when
+        boolean removedFromBasket = carRentalShop.removeFromBasket(basket, carModel, insuranceModel);
+        Basket.printList(basket);
+
+        //then
+        Assertions.assertTrue(removedFromBasket, "Items were not removed from the basket");
+
 
     }
 }

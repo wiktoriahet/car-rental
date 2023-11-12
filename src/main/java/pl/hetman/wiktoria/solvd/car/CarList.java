@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+//Generics and collections task
 public class CarList {
     private static final Logger LOGGER = LogManager.getLogger(CarList.class);
 

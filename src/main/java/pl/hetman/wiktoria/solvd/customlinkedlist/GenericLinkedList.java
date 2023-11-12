@@ -3,6 +3,7 @@ package pl.hetman.wiktoria.solvd.customlinkedlist;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+//Generics and collections task
 public class GenericLinkedList<T> {
     private static final Logger LOGGER = LogManager.getLogger(GenericLinkedList.class);
 
@@ -41,6 +42,9 @@ public class GenericLinkedList<T> {
     public static void printList(GenericLinkedList list) {
         LOGGER.info("printList()");
         Node currentNode = list.head;
+        if(currentNode==null){
+            LOGGER.info("List is empty");
+        }
 
         while (currentNode != null) {
             System.out.println(currentNode.data);
