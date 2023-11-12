@@ -9,6 +9,7 @@ import pl.hetman.wiktoria.solvd.carrental.CarRentalOffer;
 import pl.hetman.wiktoria.solvd.company.CompanyStructure;
 import pl.hetman.wiktoria.solvd.company.Department;
 import pl.hetman.wiktoria.solvd.customlinkedlist.GenericLinkedList;
+import pl.hetman.wiktoria.solvd.exceptions.DepartmentException;
 import pl.hetman.wiktoria.solvd.exceptions.PersonException;
 import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
@@ -24,7 +25,7 @@ public class Main {
         System.setProperty("log4j.configurationFile", "log4j2.xml");
     }
 
-    public static void main(String[] args) throws PersonException {
+    public static void main(String[] args) throws PersonException, DepartmentException {
 
         List<CarModel> existingCars = new ArrayList<>();
 
@@ -75,8 +76,8 @@ public class Main {
         Employee employeeBoleslawPrus = new Employee(UniqueIdGenerator.generateId(), "Boleslaw", "Prus", customers);
 
         Department departmentParis = new Department("Paris department");
-        Department departmentBerlin = new Department("Paris department");
-        Department departmentLondon = new Department("Berlin department");
+        Department departmentBerlin = new Department("Berlin department");
+        Department departmentLondon = new Department("London department");
 
         CompanyStructure companyStructure = new CompanyStructure();
 
