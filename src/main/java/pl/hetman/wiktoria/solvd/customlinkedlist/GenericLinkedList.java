@@ -7,11 +7,11 @@ import org.apache.logging.log4j.Logger;
 public class GenericLinkedList<T> {
     private static final Logger LOGGER = LogManager.getLogger(GenericLinkedList.class);
 
-    Node head;
+    private Node head;
 
     static class Node<T> {
-        T data;
-        Node next;
+        private T data;
+        private Node next;
 
         Node(T data) {
             this.data = data;
@@ -92,6 +92,14 @@ public class GenericLinkedList<T> {
 
         LOGGER.info("deleteAtPosition(...)");
         return list;
+    }
+
+    public Node getHead() {
+        return head;
+    }
+
+    public void setHead(Node head) {
+        this.head = head;
     }
 }
 

@@ -45,7 +45,7 @@ class CarRentalShopTest {
         CarRentalShop carRentalShop = new CarRentalShop();
         CarModel carModel = new SuvCar(UniqueIdGenerator.generateId(), "ford", true, false, 300, true, true, true);
         InsuranceModel insuranceModel = new InsuranceModel(UniqueIdGenerator.generateId(), "Deluxe", true, true, true, 400);
-        Basket<Objects> basket = new Basket<>();
+        Basket<Objects> basket;
         basket = carRentalShop.addToBasket(carModel, insuranceModel);
 
         //when
