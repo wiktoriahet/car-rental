@@ -60,7 +60,8 @@ public class CarRentalShop extends CarRentalOffer implements IShop {
         Basket<Objects> basket = new Basket<>();
         Basket.insert(basket, carModel);
         Basket.insert(basket, insuranceModel);
-        LOGGER.info("Car and insurance added to the basket: " + basket.toString());
+        Basket.printList(basket);
+        LOGGER.info("Car and insurance added to the basket");
         return basket;
     }
 
