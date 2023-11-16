@@ -15,6 +15,9 @@ public class CarModel implements ICar {
     private boolean spareTire;
     double feePerDay;
 
+    public CarModel() {
+    }
+
     public CarModel(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay) {
         LOGGER.info("CarModel("+id+", "+carModelName+", "+spareTire+", "+feePerDay+")");
         this.id = id;
