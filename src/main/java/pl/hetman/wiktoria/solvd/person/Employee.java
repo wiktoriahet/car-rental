@@ -8,6 +8,7 @@ import pl.hetman.wiktoria.solvd.logs.FileLogger;
 import java.util.List;
 import java.util.Objects;
 
+//Generics and collections task
 public class Employee extends PersonModel {
     private static final Logger LOGGER = LogManager.getLogger(Employee.class);
 
@@ -23,6 +24,12 @@ public class Employee extends PersonModel {
         this.surname = surname;
         this.customers = customers;
         printInformation();
+        LOGGER.info("Employee(...)");
+    }
+
+    public Employee(List<Customer> customers) {
+        LOGGER.info("Employee("+customers+")");
+        this.customers = customers;
         LOGGER.info("Employee(...)");
     }
 

@@ -15,6 +15,9 @@ public class CarModel implements ICar {
     private boolean spareTire;
     double feePerDay;
 
+    public CarModel() {
+    }
+
     public CarModel(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay) {
         LOGGER.info("CarModel("+id+", "+carModelName+", "+spareTire+", "+feePerDay+")");
         this.id = id;
@@ -28,9 +31,7 @@ public class CarModel implements ICar {
 
     @Override
     public boolean displayInformation() {
-
-        //LOGGER.info("displayInformation()");
-        LOGGER.info("displayInformation()");
+        LOGGER.info("Displaying information for Car");
         boolean informationDisplayed = true;
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -43,8 +44,7 @@ public class CarModel implements ICar {
                 .append("\n")
                 .append("Fee per day: " + feePerDay);
 
-        System.out.println(stringBuilder);
-        LOGGER.info("displayInformation(...)");
+        LOGGER.info(stringBuilder.toString());
         return informationDisplayed;
 
     }

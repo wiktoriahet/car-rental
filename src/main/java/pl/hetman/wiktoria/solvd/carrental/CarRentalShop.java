@@ -11,11 +11,18 @@ import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 import pl.hetman.wiktoria.solvd.logs.FileLogger;
 import pl.hetman.wiktoria.solvd.carrental.rent.CarRentalModel;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+//Generics and collections task
 public class CarRentalShop extends CarRentalOffer implements IShop {
 
     private static final Logger LOGGER = LogManager.getLogger(CarRentalShop.class);
 
     private final String carRentalName = "Car Rental Service";
+
+    //private Basket basket = new Basket();
 
     private void chooseOffer(){
         LOGGER.info("chooseOffer()");
@@ -36,12 +43,9 @@ public class CarRentalShop extends CarRentalOffer implements IShop {
         LOGGER.info("chooseOffer(...)");
     }
 
-
     @Override
-    public boolean addToBasket(CarModel carModel, InsuranceModel insuranceModel) throws CarRentalException {
-        LOGGER.info("addToBasket("+carModel+", "+insuranceModel+")");
-        chooseOffer();
-        boolean addedToBasket = false;
+    public Basket addToBasket(CarModel carModel, InsuranceModel insuranceModel) throws CarRentalException {
+        LOGGER.info("Adding car and insurance to the basket");
         if(carModel==null){
             CarException carException = new CarException("Problem with car while adding to basket" + "\n");
             FileLogger.logToFile(carException.getMessage());
@@ -53,27 +57,31 @@ public class CarRentalShop extends CarRentalOffer implements IShop {
             LOGGER.error(insuranceException.getMessage());
             throw insuranceException;
         }
-        chooseOffer(carModel, insuranceModel);
-        addedToBasket=true;
-        LOGGER.info("addToBasket(...)");
-        return addedToBasket;
+        Basket<Objects> basket = new Basket<>();
+        Basket.insert(basket, carModel);
+        Basket.insert(basket, insuranceModel);
+        Basket.printList(basket);
+        LOGGER.info("Car and insurance added to the basket");
+        return basket;
     }
 
     @Override
-    public boolean removeFromBasket(CarModel carModel, InsuranceModel insuranceModel)throws CarRentalException{
-        LOGGER.info("removeFromBasket("+carModel+", "+insuranceModel+")");
-        boolean removedFromBasket = false;
-        if(carModel==null||insuranceModel==null){
-            ShopException cannotRemoveFromBasket = new ShopException("Cannot remove from basket");
-            FileLogger.logToFile(cannotRemoveFromBasket.getMessage());
-            LOGGER.error(cannotRemoveFromBasket.getMessage());
-            throw cannotRemoveFromBasket;
+    public boolean removeFromBasket(Basket<Objects> basket, CarModel carModel, InsuranceModel insuranceModel) throws CarRentalException{
+        if(carModel==null){
+            CarException carException = new CarException("Problem with car while adding to basket" + "\n");
+            FileLogger.logToFile(carException.getMessage());
+            LOGGER.error(carException.getMessage());
+            throw carException;
+        } else if(insuranceModel==null){
+            InsuranceException insuranceException = new InsuranceException("Problem with insurance while adding to basket" + "\n");
+            FileLogger.logToFile(insuranceException.getMessage());
+            LOGGER.error(insuranceException.getMessage());
+            throw insuranceException;
         }
-        removedFromBasket = true;
-        System.out.println("Removed chosen offer from basket");
-        LOGGER.info("removeFromBasket(...)");
-        return removedFromBasket;
-
+        Basket.deleteAtPosition(basket, 0);
+        Basket.deleteAtPosition(basket, 0);
+        LOGGER.info("Car and insurance deleted from the basket");
+        return true;
     }
 
     @Override

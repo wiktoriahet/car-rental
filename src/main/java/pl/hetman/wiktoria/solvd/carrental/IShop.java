@@ -6,10 +6,12 @@ import pl.hetman.wiktoria.solvd.exceptions.ShopException;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 import pl.hetman.wiktoria.solvd.carrental.rent.CarRentalModel;
 
+import java.util.Objects;
+
 public interface IShop {
 
-    boolean addToBasket(CarModel carModel, InsuranceModel insuranceModel) throws CarRentalException;
-    boolean removeFromBasket(CarModel carModel, InsuranceModel insuranceModel)throws CarRentalException;
+    Basket addToBasket(CarModel carModel, InsuranceModel insuranceModel) throws CarRentalException;
+    boolean removeFromBasket(Basket<Objects> basket, CarModel carModel, InsuranceModel insuranceModel)throws CarRentalException;
     boolean finishShopping(CarRentalModel carRentalModel)throws ShopException;
 
 }

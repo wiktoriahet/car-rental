@@ -2,20 +2,36 @@ package pl.hetman.wiktoria.solvd.customlinkedlist;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import pl.hetman.wiktoria.solvd.carrental.rent.CarRentalModel;
 
+//Generics and collections task
 public class GenericLinkedList<T> {
     private static final Logger LOGGER = LogManager.getLogger(GenericLinkedList.class);
 
-    Node head;
+    private Node head;
 
-    static class Node<T> {
-        T data;
-        Node next;
+    private static class Node<T> {
+        private T data;
+        private Node next;
 
         Node(T data) {
             this.data = data;
             next = null;
+        }
+
+        public T getData() {
+            return data;
+        }
+
+        public void setData(T data) {
+            this.data = data;
+        }
+
+        public Node getNext() {
+            return next;
+        }
+
+        public void setNext(Node next) {
+            this.next = next;
         }
     }
 
@@ -42,6 +58,9 @@ public class GenericLinkedList<T> {
     public static void printList(GenericLinkedList list) {
         LOGGER.info("printList()");
         Node currentNode = list.head;
+        if(currentNode==null){
+            LOGGER.info("List is empty");
+        }
 
         while (currentNode != null) {
             System.out.println(currentNode.data);
@@ -89,6 +108,14 @@ public class GenericLinkedList<T> {
 
         LOGGER.info("deleteAtPosition(...)");
         return list;
+    }
+
+    public Node getHead() {
+        return head;
+    }
+
+    public void setHead(Node head) {
+        this.head = head;
     }
 }
 

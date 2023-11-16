@@ -16,19 +16,20 @@ class CarRentalModelTest {
     }
 
     @Test
-    void rentACar() throws CarRentalException {
+    void validateRentCar() throws CarRentalException {
         //given
-        //InsuranceModel insuranceModel = new InsuranceModel(UniqueIdGenerator.generateId(), "Premium", true, true, true, 200);
-        InsuranceModel insuranceModel = null;
-        CarModel carModel = new EconomyCar(UniqueIdGenerator.generateId(), "Ford", true, true, 120);
-        //CarModel carModel = null;
+        InsuranceModel insuranceModel = new InsuranceModel(UniqueIdGenerator.generateId(), "Premium", true, true, true, 200);
+        //InsuranceModel insuranceModel = null;
+        //CarModel carModel = new EconomyCar(UniqueIdGenerator.generateId(), "Ford", true, true, 120);
+        CarModel carModel = null;
         CarRentalModel carRentalModel = new CarRentalModel(UniqueIdGenerator.generateId(), 7, carModel, insuranceModel);
 
         //when
         boolean rentedCar = carRentalModel.rentACar(carModel, insuranceModel);
 
         //then
-        Assertions.assertEquals(true, rentedCar);
+        Assertions.assertTrue(rentedCar, "Car couldn't be rented successfully");
+        //Assertions.assertFalse(rentedCar, "Car should be rented successfully");
 
     }
 }

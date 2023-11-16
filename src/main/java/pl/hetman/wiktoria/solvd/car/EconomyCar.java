@@ -28,6 +28,12 @@ public class EconomyCar extends CarModel {
 
     @Override
     public String toString() {
-        return "EconomyCar{}";
+        return "EconomyCar{" +
+                "id=" + getId() +
+                ", carModelName='" + getCarModelName() + '\'' +
+                ", airConditioning=" + isAirConditioning() +
+                ", spareTire=" + isSpareTire() +
+                ", feePerDay=" + getFeePerDay() +
+                '}';
     }
 }

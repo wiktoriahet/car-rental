@@ -35,18 +35,14 @@ public class SuvCar extends CarModel {
 
     @Override
     public boolean displayInformation() {
-        super.displayInformation();
-        LOGGER.info("displayInformation()");
-        boolean informationDisplayed = true;
+        LOGGER.info("Displaying information for SuvCar");
+        boolean informationDisplayed = super.displayInformation();
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
-                .append("Premium car: " + premium)
-                .append("\n")
-                .append("Four wheel drive: " + fourWheelDrive)
-                .append("\n")
-                .append("Full size: " + fullSize);
-        System.out.println(stringBuilder);
-        LOGGER.info("displayInformation(...)");
+                .append("Premium car: ").append(premium).append("\n")
+                .append("Four wheel drive: ").append(fourWheelDrive).append("\n")
+                .append("Full size: ").append(fullSize);
+        LOGGER.info(stringBuilder.toString());
         return informationDisplayed;
     }
 
@@ -77,7 +73,7 @@ public class SuvCar extends CarModel {
     @Override
     public String toString() {
         return "SuvCar{" + '\'' +
-                SuvCar.super.toString() + '\'' +
+                super.toString() + '\'' +
                 "fullSize=" + fullSize +
                 ", fourWheelDrive=" + fourWheelDrive +
                 ", premium=" + premium +
