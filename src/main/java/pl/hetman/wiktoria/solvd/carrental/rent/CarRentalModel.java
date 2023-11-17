@@ -19,7 +19,7 @@ public class CarRentalModel implements IRental {
     private InsuranceModel insuranceModel;
 
     public CarRentalModel(Long id, int days, CarModel carModel, InsuranceModel insuranceModel) {
-        LOGGER.info("CarRentalModel("+id+", "+days+", "+carModel+", "+insuranceModel+")");
+        LOGGER.info("CarRentalModel(" + id + ", " + days + ", " + carModel + ", " + insuranceModel + ")");
         this.id = id;
         this.days = days;
         this.carModel = carModel;
@@ -28,17 +28,17 @@ public class CarRentalModel implements IRental {
     }
 
     @Override
-    public boolean rentACar(CarModel carModel, InsuranceModel insuranceModel) throws CarRentalException{
-        LOGGER.info("rentACar("+carModel+", "+insuranceModel+")");
+    public boolean rentACar(CarModel carModel, InsuranceModel insuranceModel) throws CarRentalException {
+        LOGGER.info("rentACar(" + carModel + ", " + insuranceModel + ")");
         StringBuilder stringBuilder = new StringBuilder();
         boolean rented = false;
 
-        if(insuranceModel==null){
+        if (insuranceModel == null) {
             InsuranceException insuranceException = new InsuranceException("Problem with insurance while renting a car" + "\n");
             FileLogger.logToFile(insuranceException.getMessage());
             LOGGER.error(insuranceException.getMessage());
             throw insuranceException;
-        } else if(carModel==null){
+        } else if (carModel == null) {
             CarException carException = new CarException("Problem with car while renting a car" + "\n");
             FileLogger.logToFile(carException.getMessage());
             LOGGER.error(carException.getMessage());
@@ -57,7 +57,7 @@ public class CarRentalModel implements IRental {
 
     @Override
     public double getPrice(CarModel carModel, InsuranceModel insuranceModel) {
-        LOGGER.info("getPrice("+carModel+", "+insuranceModel+")");
+        LOGGER.info("getPrice(" + carModel + ", " + insuranceModel + ")");
         double priceOfInsurance = insuranceModel.getPrice();
         double priceInTotal = priceOfInsurance + (days * carModel.getFeePerDay());
         LOGGER.info("getPrice(...)");

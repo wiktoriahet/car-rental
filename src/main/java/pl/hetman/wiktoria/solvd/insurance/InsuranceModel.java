@@ -7,12 +7,11 @@ import java.util.Objects;
 
 public class InsuranceModel implements IInsurance {
     private static final Logger LOGGER = LogManager.getLogger(InsuranceModel.class);
-
-    private Long id;
-    private String packageName;
     boolean theftInsurance;
     boolean accidentsInsurance;
     boolean destructionInsurance;
+    private Long id;
+    private String packageName;
     private double price;
 
     public InsuranceModel(Long id, String packageName, boolean theftInsurance, boolean accidentsInsurance, boolean destructionInsurance, double price) {
@@ -28,7 +27,7 @@ public class InsuranceModel implements IInsurance {
 
     @Override
     public String chooseInsurance(String packageName) {
-        LOGGER.info("chooseInsurance("+packageName+")");
+        LOGGER.info("chooseInsurance(" + packageName + ")");
         setPackageName(packageName);
         LOGGER.info("chooseInsurance(...)");
         return packageName;

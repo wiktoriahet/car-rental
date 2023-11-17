@@ -9,12 +9,12 @@ import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 
 class CustomerTest {
 
-    static{
-        System.setProperty("log4j.configurationFile","log4j2.xml");
+    static {
+        System.setProperty("log4j.configurationFile", "log4j2.xml");
     }
 
     @Test
-    void customer() throws PersonException {
+    void verifyCustomer() throws PersonException {
         //given
         InsuranceModel insuranceModel = new InsuranceModel(UniqueIdGenerator.generateId(), "Deluxe", true, true, true, 500);
         CarModel carModel = new CarModel(UniqueIdGenerator.generateId(), "ford", true, true, 500);

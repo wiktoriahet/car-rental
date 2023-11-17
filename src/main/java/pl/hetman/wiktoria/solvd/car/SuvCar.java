@@ -6,10 +6,6 @@ import org.apache.logging.log4j.Logger;
 public class SuvCar extends CarModel {
 
     private static final Logger LOGGER = LogManager.getLogger(SuvCar.class);
-
-    private boolean fullSize;
-    private boolean fourWheelDrive;
-    private boolean premium;
     static int count;
 
     static {
@@ -17,9 +13,13 @@ public class SuvCar extends CarModel {
         LOGGER.info("Suv car static block");
     }
 
+    private boolean fullSize;
+    private boolean fourWheelDrive;
+    private boolean premium;
+
     public SuvCar(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay, boolean fullSize, boolean fourWheelDrive, boolean premium) {
         super(id, carModelName, airConditioning, spareTire, feePerDay);
-        LOGGER.info("SuvCar("+id+", "+carModelName+", "+airConditioning+", "+spareTire+", "+feePerDay+", "+fullSize+", "+fourWheelDrive+", "+premium+")");
+        LOGGER.info("SuvCar(" + id + ", " + carModelName + ", " + airConditioning + ", " + spareTire + ", " + feePerDay + ", " + fullSize + ", " + fourWheelDrive + ", " + premium + ")");
         this.fullSize = fullSize;
         this.fourWheelDrive = fourWheelDrive;
         this.premium = premium;
@@ -27,7 +27,7 @@ public class SuvCar extends CarModel {
         LOGGER.info("SuvCar(...)");
     }
 
-    public static void displayCount(){
+    public static void displayCount() {
         LOGGER.info("displayCount()");
         System.out.println("Suv cars in use: " + count);
         LOGGER.info("displayCount(...)");

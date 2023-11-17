@@ -18,8 +18,8 @@ public class Customer extends PersonModel {
     private InsuranceModel insuranceModel;
     private CarModel carModel;
 
-    public Customer(Long id, String name, String surname, InsuranceModel insuranceModel, CarModel carModel) throws PersonException{
-        LOGGER.info("Customer("+id+", "+name+", "+surname+", "+insuranceModel+", "+carModel+")");
+    public Customer(Long id, String name, String surname, InsuranceModel insuranceModel, CarModel carModel) throws PersonException {
+        LOGGER.info("Customer(" + id + ", " + name + ", " + surname + ", " + insuranceModel + ", " + carModel + ")");
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -32,7 +32,7 @@ public class Customer extends PersonModel {
     @Override
     void printInformation() throws PersonException {
         LOGGER.info("printInformation()");
-        if(id==null){
+        if (id == null) {
             PersonException personException = new PersonException("Customer doesn't exist");
             FileLogger.logToFile(personException.getMessage());
             LOGGER.error(personException.getMessage());

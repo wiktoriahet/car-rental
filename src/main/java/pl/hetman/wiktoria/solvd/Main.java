@@ -8,7 +8,6 @@ import pl.hetman.wiktoria.solvd.car.SuvCar;
 import pl.hetman.wiktoria.solvd.carrental.CarRentalOffer;
 import pl.hetman.wiktoria.solvd.company.CompanyStructure;
 import pl.hetman.wiktoria.solvd.company.Department;
-import pl.hetman.wiktoria.solvd.customlinkedlist.GenericLinkedList;
 import pl.hetman.wiktoria.solvd.exceptions.DepartmentException;
 import pl.hetman.wiktoria.solvd.exceptions.PersonException;
 import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
@@ -86,7 +85,7 @@ public class Main {
         companyStructure.addToCompanyStructure(employeeTomTomski, departmentParis);
 
         companyStructure.addToCompanyStructure(employeeJanNowak, departmentBerlin);
-        companyStructure.addToCompanyStructure(employeeAdamMickiewicz,departmentBerlin);
+        companyStructure.addToCompanyStructure(employeeAdamMickiewicz, departmentBerlin);
 
         companyStructure.addToCompanyStructure(employeeJanKochanowski, departmentLondon);
         companyStructure.addToCompanyStructure(employeeBoleslawPrus, departmentLondon);

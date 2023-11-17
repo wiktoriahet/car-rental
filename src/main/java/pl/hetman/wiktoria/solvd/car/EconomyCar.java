@@ -9,7 +9,7 @@ public class EconomyCar extends CarModel {
 
     static int count;
 
-    static{
+    static {
         count = 0;
         LOGGER.info("Economy car static block");
         //System.out.println("Economy car static block");
@@ -17,12 +17,12 @@ public class EconomyCar extends CarModel {
 
     public EconomyCar(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay) {
         super(id, carModelName, airConditioning, spareTire, feePerDay);
-        LOGGER.info("Economy("+id+", "+carModelName+", "+spareTire+", "+feePerDay+")");
+        LOGGER.info("Economy(" + id + ", " + carModelName + ", " + spareTire + ", " + feePerDay + ")");
         count++;
         LOGGER.info("Economy(...)");
     }
 
-    public static void displayCount(){
+    public static void displayCount() {
         System.out.println("Economy cars in use: " + count);
     }
 
