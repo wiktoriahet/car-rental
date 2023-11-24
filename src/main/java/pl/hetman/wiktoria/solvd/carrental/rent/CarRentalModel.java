@@ -17,13 +17,15 @@ public class CarRentalModel implements IRental {
     private int days;
     private CarModel carModel;
     private InsuranceModel insuranceModel;
+    private RentalStatus rentalStatus;
 
-    public CarRentalModel(Long id, int days, CarModel carModel, InsuranceModel insuranceModel) {
+    public CarRentalModel(Long id, int days, CarModel carModel, InsuranceModel insuranceModel, RentalStatus rentalStatus) {
         LOGGER.info("CarRentalModel("+id+", "+days+", "+carModel+", "+insuranceModel+")");
         this.id = id;
         this.days = days;
         this.carModel = carModel;
         this.insuranceModel = insuranceModel;
+        this.rentalStatus = rentalStatus;
         LOGGER.info("CarRentalModel(...)");
     }
 
@@ -33,6 +35,7 @@ public class CarRentalModel implements IRental {
         StringBuilder stringBuilder = new StringBuilder();
         boolean rented = false;
 
+        if(rentalStatus.getStatus().equals("Available")){
         if(insuranceModel==null){
             InsuranceException insuranceException = new InsuranceException("Problem with insurance while renting a car" + "\n");
             FileLogger.logToFile(insuranceException.getMessage());
@@ -43,6 +46,11 @@ public class CarRentalModel implements IRental {
             FileLogger.logToFile(carException.getMessage());
             LOGGER.error(carException.getMessage());
             throw carException;
+        }
+        }else {
+            LOGGER.info(rentalStatus.getStatus().toString());
+            rented = false;
+            return rented;
         }
         stringBuilder
                 .append("Car " + carModel.getId() + " rented for " + days + "day(s)")
