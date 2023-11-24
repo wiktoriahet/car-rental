@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pl.hetman.wiktoria.solvd.car.CarModel;
 import pl.hetman.wiktoria.solvd.car.SuvCar;
+import pl.hetman.wiktoria.solvd.car.SuvModel;
 import pl.hetman.wiktoria.solvd.exceptions.CarRentalException;
 import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceCatalogue;
@@ -23,7 +24,8 @@ class CarRentalShopTest {
     void addToBasket() {
         //given
         CarRentalShop carRentalShop = new CarRentalShop();
-        CarModel carModel = new SuvCar(UniqueIdGenerator.generateId(), "ford", true, false, 300, true, true, true);
+        carRentalShop.setStatus(ShoppingStatus.ONGOING.getStatus());
+        CarModel carModel = new SuvCar(UniqueIdGenerator.generateId(), SuvModel.CAYENNE.getModel(), true, false, SuvModel.CAYENNE.getPricePerDay(), true, true, true);
         InsuranceModel insuranceModel = new InsuranceModel();
         insuranceModel.chooseInsurance(InsuranceCatalogue.BASIC);
         Basket<Objects> basket = new Basket<>();
@@ -46,7 +48,7 @@ class CarRentalShopTest {
         //given
         CarRentalShop carRentalShop = new CarRentalShop();
         carRentalShop.setStatus(ShoppingStatus.ONGOING.getStatus());
-        CarModel carModel = new SuvCar(UniqueIdGenerator.generateId(), "ford", true, false, 300, true, true, true);
+        CarModel carModel = new SuvCar(UniqueIdGenerator.generateId(), SuvModel.CAYENNE.getModel(), true, false, SuvModel.CAYENNE.getPricePerDay(), true, true, true);
         InsuranceModel insuranceModel = new InsuranceModel();
         insuranceModel.chooseInsurance(InsuranceCatalogue.BASIC);
         Basket<Objects> basket;

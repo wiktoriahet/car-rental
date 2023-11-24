@@ -19,7 +19,7 @@ public class SuvCar extends CarModel {
 
     public SuvCar(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay, boolean fullSize, boolean fourWheelDrive, boolean premium) {
         super(id, carModelName, airConditioning, spareTire, feePerDay);
-        LOGGER.info("SuvCar("+id+", "+carModelName+", "+airConditioning+", "+spareTire+", "+feePerDay+", "+fullSize+", "+fourWheelDrive+", "+premium+")");
+        LOGGER.info("SuvCar("+id+", "+carModelName+", "+airConditioning+", "+spareTire+", "+SuvModel.valueOf(carModelName.toUpperCase()).getPricePerDay()+", "+fullSize+", "+fourWheelDrive+", "+premium+")");
         this.fullSize = fullSize;
         this.fourWheelDrive = fourWheelDrive;
         this.premium = premium;

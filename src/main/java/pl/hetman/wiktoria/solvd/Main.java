@@ -3,8 +3,11 @@ package pl.hetman.wiktoria.solvd;
 import pl.hetman.wiktoria.solvd.car.CarList;
 import pl.hetman.wiktoria.solvd.car.CarModel;
 import pl.hetman.wiktoria.solvd.car.EconomyCar;
+import pl.hetman.wiktoria.solvd.car.EconomyModel;
 import pl.hetman.wiktoria.solvd.car.SedanCar;
+import pl.hetman.wiktoria.solvd.car.SedanModel;
 import pl.hetman.wiktoria.solvd.car.SuvCar;
+import pl.hetman.wiktoria.solvd.car.SuvModel;
 import pl.hetman.wiktoria.solvd.carrental.CarRentalOffer;
 import pl.hetman.wiktoria.solvd.company.CompanyStructure;
 import pl.hetman.wiktoria.solvd.company.Department;
@@ -44,20 +47,24 @@ public class Main {
         System.out.println(price);
         System.out.println("..................");
 
-        SuvCar suvCarOne = new SuvCar(UniqueIdGenerator.generateId(), "tuareg", true, true, 650, true, true, true);
+        SuvCar suvCarOne = new SuvCar(UniqueIdGenerator.generateId(), SuvModel.CAYENNE.getModel(), true, true, SuvModel.CAYENNE.getPricePerDay(), true, true, true);
         existingCars.add(suvCarOne);
 
         suvCarOne.displayInformation();
 
-        CarModel suvCarTwo = new SuvCar(UniqueIdGenerator.generateId(), "tuareg", false, true, 650, true, true, true);
+        CarModel suvCarTwo = new SuvCar(UniqueIdGenerator.generateId(), SuvModel.FREEMONT.getModel(), false, true, SuvModel.FREEMONT.getPricePerDay(), true, true, true);
         suvCarTwo.displayInformation();
         existingCars.add(suvCarTwo);
 
         SuvCar.displayCount();
 
-        CarModel economyCar = new EconomyCar(UniqueIdGenerator.generateId(), "Fiat", true, false, 400);
-        System.out.println("Created economy car: " + economyCar.toString());
+        System.out.println("..................");
+        CarModel economyCar = new EconomyCar(UniqueIdGenerator.generateId(), EconomyModel.ASTRA.getModel(), true, false, EconomyModel.ASTRA.getPricePerDay());
+        System.out.println("Created economy car: " + economyCar);
         economyCar.displayInformation();
+        System.out.println("..................");
+
+        System.out.println("");
 
         System.out.println(".............");
         Customer customerJanKowalski = new Customer(UniqueIdGenerator.generateId(), "Jan", "Kowalski", insuranceBasic, suvCarOne);
@@ -67,7 +74,7 @@ public class Main {
         Customer customerAdamAdamski = new Customer(UniqueIdGenerator.generateId(), "Adam", "Adamski", insuranceBasic, suvCarTwo);
         customers.add(customerAdamAdamski);
 
-        CarModel sedanCar = new SedanCar(UniqueIdGenerator.generateId(), "Fiat", true, true, 400, false);
+        CarModel sedanCar = new SedanCar(UniqueIdGenerator.generateId(), SedanModel.MONDEO.getModel(), true, true, SedanModel.MONDEO.getPricePerDay(), false);
         existingCars.add(sedanCar);
         sedanCar.displayInformation();
 

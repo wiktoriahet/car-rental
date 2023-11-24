@@ -13,7 +13,7 @@ class CarModelTest {
     @Test
     void displayInformation() {
         //given
-        CarModel carModel = new SedanCar(UniqueIdGenerator.generateId(), "Ford", true, true, 600, true);
+        CarModel carModel = new SedanCar(UniqueIdGenerator.generateId(), SedanModel.PASSAT.getModel(), true, true, SedanModel.PASSAT.getPricePerDay(), true);
 
         //when
         boolean displayedInformation = carModel.displayInformation();

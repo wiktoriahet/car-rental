@@ -17,7 +17,7 @@ public class EconomyCar extends CarModel {
 
     public EconomyCar(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay) {
         super(id, carModelName, airConditioning, spareTire, feePerDay);
-        LOGGER.info("Economy("+id+", "+carModelName+", "+spareTire+", "+feePerDay+")");
+        LOGGER.info("Economy("+id+", "+carModelName+", "+spareTire+", "+EconomyModel.valueOf(carModelName.toUpperCase()).getPricePerDay()+")");
         count++;
         LOGGER.info("Economy(...)");
     }
