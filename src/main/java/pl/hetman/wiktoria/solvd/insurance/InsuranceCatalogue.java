@@ -6,8 +6,8 @@ public enum InsuranceCatalogue {
     EXTRA("Extra", 200),
     DELUXE("Deluxe", 300);
 
-    private String packageName;
-    private double price;
+    private final String packageName;
+    private final double price;
 
     static {
         System.out.printf("Loading insurance catalogue");
