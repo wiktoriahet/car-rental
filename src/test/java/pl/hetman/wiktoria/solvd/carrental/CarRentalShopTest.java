@@ -45,6 +45,7 @@ class CarRentalShopTest {
     void addToBasketAndRemoveFromBasket() throws CarRentalException {
         //given
         CarRentalShop carRentalShop = new CarRentalShop();
+        carRentalShop.setStatus(ShoppingStatus.ONGOING.getStatus());
         CarModel carModel = new SuvCar(UniqueIdGenerator.generateId(), "ford", true, false, 300, true, true, true);
         InsuranceModel insuranceModel = new InsuranceModel();
         insuranceModel.chooseInsurance(InsuranceCatalogue.BASIC);
@@ -57,6 +58,7 @@ class CarRentalShopTest {
 
         //then
         Assertions.assertTrue(removedFromBasket, "Items were not removed from the basket");
+        Assertions.assertEquals(ShoppingStatus.CANCELED.getStatus(), carRentalShop.getStatus(), "Status is not equal");
 
 
     }
