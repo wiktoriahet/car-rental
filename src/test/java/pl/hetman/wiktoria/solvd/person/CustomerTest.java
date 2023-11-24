@@ -5,18 +5,20 @@ import org.junit.jupiter.api.Test;
 import pl.hetman.wiktoria.solvd.car.CarModel;
 import pl.hetman.wiktoria.solvd.exceptions.PersonException;
 import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
+import pl.hetman.wiktoria.solvd.insurance.InsuranceCatalogue;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 
 class CustomerTest {
 
-    static{
-        System.setProperty("log4j.configurationFile","log4j2.xml");
+    static {
+        System.setProperty("log4j.configurationFile", "log4j2.xml");
     }
 
     @Test
     void customer() throws PersonException {
         //given
-        InsuranceModel insuranceModel = new InsuranceModel(UniqueIdGenerator.generateId(), "Deluxe", true, true, true, 500);
+        InsuranceModel insuranceModel = new InsuranceModel();
+        insuranceModel.chooseInsurance(InsuranceCatalogue.BASIC);
         CarModel carModel = new CarModel(UniqueIdGenerator.generateId(), "ford", true, true, 500);
         Customer customer = new Customer(UniqueIdGenerator.generateId(), "Anna", "Nowak", insuranceModel, carModel);
 

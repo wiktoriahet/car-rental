@@ -8,18 +8,20 @@ import pl.hetman.wiktoria.solvd.carrental.rent.CarRentalModel;
 import pl.hetman.wiktoria.solvd.carrental.rent.RentalStatus;
 import pl.hetman.wiktoria.solvd.exceptions.CarRentalException;
 import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
+import pl.hetman.wiktoria.solvd.insurance.InsuranceCatalogue;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 
 class CarRentalModelTest {
 
-    static{
-        System.setProperty("log4j.configurationFile","log4j2.xml");
+    static {
+        System.setProperty("log4j.configurationFile", "log4j2.xml");
     }
 
     @Test
     void validateRentCar() throws CarRentalException {
         //given
-        InsuranceModel insuranceModel = new InsuranceModel(UniqueIdGenerator.generateId(), "Premium", true, true, true, 200);
+        InsuranceModel insuranceModel = new InsuranceModel();
+        insuranceModel.chooseInsurance(InsuranceCatalogue.BASIC);
         //InsuranceModel insuranceModel = null;
         CarModel carModel = new EconomyCar(UniqueIdGenerator.generateId(), "Ford", true, true, 120);
         //CarModel carModel = null;
@@ -35,6 +37,24 @@ class CarRentalModelTest {
         //then
         Assertions.assertTrue(rentedCarSuccessfully, "Car couldn't be rented successfully");
         Assertions.assertFalse(rentedCarUnsuccesfully, "Car should be rented successfully");
+
+    }
+
+    @Test
+    void checkPriceCalculations() {
+        //given
+        InsuranceModel insuranceModel = new InsuranceModel();
+        insuranceModel.chooseInsurance(InsuranceCatalogue.BASIC);
+        CarModel carModel = new EconomyCar(UniqueIdGenerator.generateId(), "Ford", true, true, 120);
+        RentalStatus rentalStatusAvailable = RentalStatus.AVAILABLE;
+        CarRentalModel carRentalModel = new CarRentalModel(UniqueIdGenerator.generateId(), 7, carModel, insuranceModel, rentalStatusAvailable);
+
+        //when
+        double priceExpected = InsuranceCatalogue.BASIC.getPrice() + (carModel.getFeePerDay() * carRentalModel.getDays());
+        double priceCalculated = carRentalModel.getRentalPrice(carModel, insuranceModel);
+
+        //then
+        Assertions.assertEquals(priceExpected, priceCalculated, "Prices are not equal");
 
     }
 }

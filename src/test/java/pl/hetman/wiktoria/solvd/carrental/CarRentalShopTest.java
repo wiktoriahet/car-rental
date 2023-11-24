@@ -6,6 +6,7 @@ import pl.hetman.wiktoria.solvd.car.CarModel;
 import pl.hetman.wiktoria.solvd.car.SuvCar;
 import pl.hetman.wiktoria.solvd.exceptions.CarRentalException;
 import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
+import pl.hetman.wiktoria.solvd.insurance.InsuranceCatalogue;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 import pl.hetman.wiktoria.solvd.logs.FileLogger;
 
@@ -14,8 +15,8 @@ import java.util.Objects;
 //Generics and collections task
 class CarRentalShopTest {
 
-    static{
-        System.setProperty("log4j.configurationFile","log4j2.xml");
+    static {
+        System.setProperty("log4j.configurationFile", "log4j2.xml");
     }
 
     @Test
@@ -23,14 +24,15 @@ class CarRentalShopTest {
         //given
         CarRentalShop carRentalShop = new CarRentalShop();
         CarModel carModel = new SuvCar(UniqueIdGenerator.generateId(), "ford", true, false, 300, true, true, true);
-        InsuranceModel insuranceModel = new InsuranceModel(UniqueIdGenerator.generateId(), "Deluxe", true, true, true, 400);
+        InsuranceModel insuranceModel = new InsuranceModel();
+        insuranceModel.chooseInsurance(InsuranceCatalogue.BASIC);
         Basket<Objects> basket = new Basket<>();
 
         //when
-        try{
+        try {
             basket = carRentalShop.addToBasket(carModel, insuranceModel);
             Basket.printList(basket);
-        }catch (CarRentalException e){
+        } catch (CarRentalException e) {
             FileLogger.logToFile(e.getMessage());
         }
 
@@ -40,11 +42,12 @@ class CarRentalShopTest {
     }
 
     @Test
-    void addToBasketAndRemoveFromBasket() throws CarRentalException{
+    void addToBasketAndRemoveFromBasket() throws CarRentalException {
         //given
         CarRentalShop carRentalShop = new CarRentalShop();
         CarModel carModel = new SuvCar(UniqueIdGenerator.generateId(), "ford", true, false, 300, true, true, true);
-        InsuranceModel insuranceModel = new InsuranceModel(UniqueIdGenerator.generateId(), "Deluxe", true, true, true, 400);
+        InsuranceModel insuranceModel = new InsuranceModel();
+        insuranceModel.chooseInsurance(InsuranceCatalogue.BASIC);
         Basket<Objects> basket;
         basket = carRentalShop.addToBasket(carModel, insuranceModel);
 

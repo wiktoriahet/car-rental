@@ -7,6 +7,7 @@ import pl.hetman.wiktoria.solvd.exceptions.CarException;
 import pl.hetman.wiktoria.solvd.exceptions.CarRentalException;
 import pl.hetman.wiktoria.solvd.exceptions.InsuranceException;
 import pl.hetman.wiktoria.solvd.exceptions.ShopException;
+import pl.hetman.wiktoria.solvd.insurance.InsuranceCatalogue;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 import pl.hetman.wiktoria.solvd.logs.FileLogger;
 import pl.hetman.wiktoria.solvd.carrental.rent.CarRentalModel;
@@ -22,22 +23,20 @@ public class CarRentalShop extends CarRentalOffer implements IShop {
 
     private final String carRentalName = "Car Rental Service";
 
-    //private Basket basket = new Basket();
-
     private void chooseOffer(){
         LOGGER.info("chooseOffer()");
         System.out.println("Choose offer");
         LOGGER.info("chooseOffer(...)");
     }
     private void chooseOffer(CarModel carModel, InsuranceModel insuranceModel){
-        LOGGER.info("chooseOffer("+carModel+", "+insuranceModel+")");
+        LOGGER.info("chooseOffer("+carModel+", "+insuranceModel.getInsurancePackageName()+")");
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
                 .append("Confirm chosen offer: ")
                 .append("\n")
                 .append("Car: " + carModel.getCarModelName())
                 .append("\n")
-                .append("Insurance: " + insuranceModel.getPackageName());
+                .append("Insurance: " + insuranceModel.getInsurancePackageName());
 
         System.out.println(stringBuilder);
         LOGGER.info("chooseOffer(...)");

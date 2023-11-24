@@ -7,5 +7,5 @@ import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 public interface IRental{
 
     boolean rentACar(CarModel carModel, InsuranceModel insuranceModel)throws CarRentalException;
-    double getPrice(CarModel carModel, InsuranceModel insuranceModel);
+    double getRentalPrice(CarModel carModel, InsuranceModel insuranceModel);
 }

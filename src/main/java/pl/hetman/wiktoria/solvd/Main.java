@@ -8,10 +8,10 @@ import pl.hetman.wiktoria.solvd.car.SuvCar;
 import pl.hetman.wiktoria.solvd.carrental.CarRentalOffer;
 import pl.hetman.wiktoria.solvd.company.CompanyStructure;
 import pl.hetman.wiktoria.solvd.company.Department;
-import pl.hetman.wiktoria.solvd.customlinkedlist.GenericLinkedList;
 import pl.hetman.wiktoria.solvd.exceptions.DepartmentException;
 import pl.hetman.wiktoria.solvd.exceptions.PersonException;
 import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
+import pl.hetman.wiktoria.solvd.insurance.InsuranceCatalogue;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 import pl.hetman.wiktoria.solvd.person.Customer;
 import pl.hetman.wiktoria.solvd.person.Employee;
@@ -34,8 +34,15 @@ public class Main {
 
         List<Customer> customers = new ArrayList<>();
 
-        InsuranceModel insuranceDeluxe = new InsuranceModel(UniqueIdGenerator.generateId(), "Deluxe", true, true, true, 300);
-        InsuranceModel insuranceBasic = new InsuranceModel(UniqueIdGenerator.generateId(), "Basic", false, true, false, 100);
+        InsuranceModel insuranceBasic = new InsuranceModel();
+        String chosenInsurance = insuranceBasic.chooseInsurance(InsuranceCatalogue.BASIC);
+        System.out.println("..................");
+        System.out.println(chosenInsurance);
+        System.out.println(insuranceBasic.printInsuranceInformation(InsuranceCatalogue.BASIC));
+        String insurancePackageName = "BASIC";
+        double price = InsuranceCatalogue.valueOf(insurancePackageName).getPrice();
+        System.out.println(price);
+        System.out.println("..................");
 
         SuvCar suvCarOne = new SuvCar(UniqueIdGenerator.generateId(), "tuareg", true, true, 650, true, true, true);
         existingCars.add(suvCarOne);
@@ -52,8 +59,10 @@ public class Main {
         System.out.println("Created economy car: " + economyCar.toString());
         economyCar.displayInformation();
 
-        Customer customerJanKowalski = new Customer(UniqueIdGenerator.generateId(), "Jan", "Kowalski", insuranceDeluxe, suvCarOne);
+        System.out.println(".............");
+        Customer customerJanKowalski = new Customer(UniqueIdGenerator.generateId(), "Jan", "Kowalski", insuranceBasic, suvCarOne);
         customers.add(customerJanKowalski);
+        System.out.println(".............");
 
         Customer customerAdamAdamski = new Customer(UniqueIdGenerator.generateId(), "Adam", "Adamski", insuranceBasic, suvCarTwo);
         customers.add(customerAdamAdamski);
@@ -86,7 +95,7 @@ public class Main {
         companyStructure.addToCompanyStructure(employeeTomTomski, departmentParis);
 
         companyStructure.addToCompanyStructure(employeeJanNowak, departmentBerlin);
-        companyStructure.addToCompanyStructure(employeeAdamMickiewicz,departmentBerlin);
+        companyStructure.addToCompanyStructure(employeeAdamMickiewicz, departmentBerlin);
 
         companyStructure.addToCompanyStructure(employeeJanKochanowski, departmentLondon);
         companyStructure.addToCompanyStructure(employeeBoleslawPrus, departmentLondon);
