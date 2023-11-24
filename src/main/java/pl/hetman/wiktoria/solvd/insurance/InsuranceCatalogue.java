@@ -9,6 +9,10 @@ public enum InsuranceCatalogue {
     private String packageName;
     private double price;
 
+    static {
+        System.out.printf("Loading insurance catalogue");
+    }
+
     InsuranceCatalogue(String packageName, double price) {
         this.packageName = packageName;
         this.price = price;
