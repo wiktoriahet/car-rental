@@ -22,6 +22,8 @@ import pl.hetman.wiktoria.solvd.person.Employee;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -92,7 +94,7 @@ public class Main {
         //suv cars
         System.out.println("..................");
         System.out.println();
-        CarModel suvCarOne = new SuvCar(UniqueIdGenerator.generateId(), SuvModel.CAYENNE.getModel(), true, false, SuvModel.CAYENNE.getPricePerDay(), true, false, true);
+        CarModel suvCarOne = new SuvCar(UniqueIdGenerator.generateId(), SuvModel.CAYENNE.getModel(), false, false, SuvModel.CAYENNE.getPricePerDay(), true, false, true);
         existingCars.add(suvCarOne);
         CarModel suvCarTwo = new SuvCar(UniqueIdGenerator.generateId(), SuvModel.TOUAREG.getModel(), true, false, SuvModel.TOUAREG.getPricePerDay(), true, true, true);
         existingCars.add(suvCarTwo);
@@ -211,6 +213,64 @@ public class Main {
         GenericLinkedList.insert(employeeGenericLinkedList, employeeBoleslawPrus);
         GenericLinkedList.insert(employeeGenericLinkedList, employeeJanNowak);
         GenericLinkedList.printList(employeeGenericLinkedList);
+
+        System.out.println();
+        System.out.println("..................");
+
+        //1. using predicate with lambda to check if car has air conditioning
+        System.out.println("..................");
+        System.out.println();
+
+        Predicate<CarModel> carModelPredicate = carModel -> carModel.isAirConditioning() == true;
+        boolean hasAirConditioning = carModelPredicate.test(suvCarOne);
+        System.out.println("Does chosen car have air conditioning? " + hasAirConditioning);
+
+        System.out.println();
+        System.out.println("..................");
+
+        //2. using streams with lambda to display all freemont cars from existing cars list
+        System.out.println("..................");
+        System.out.println();
+
+        List<CarModel> suvCars = existingCars.stream()
+                .filter(cars -> cars.getCarModelName() == SuvModel.FREEMONT.getModel())
+                .collect(Collectors.toList());
+
+        System.out.println(suvCars);
+
+        System.out.println();
+        System.out.println("..................");
+
+        //3. using Runnable with Lambda to print information about departments
+        System.out.println("..................");
+        System.out.println();
+
+        Runnable printDepartmentInfo = () -> System.out.println(departmentBerlin.getDepartmentName());
+        printDepartmentInfo.run();
+
+        System.out.println();
+        System.out.println("..................");
+
+        //4. Using predicate to check if Anna Nowak is in company structure
+        System.out.println("..................");
+        System.out.println();
+
+        Predicate<CompanyStructure> checkCompanyStructure = department -> department.getCompanyStructure().containsKey(employeeAnnaNowak.getId());
+        boolean isInCompanyStructure = checkCompanyStructure.test(companyStructure);
+        System.out.println("Is " + employeeAnnaNowak.getName() + " in company structure? " + isInCompanyStructure);
+
+        System.out.println();
+        System.out.println("..................");
+
+        //5. Using streams to print customers that have Extra insurance
+        System.out.println("..................");
+        System.out.println();
+
+        List<Customer> customersExtra = customers.stream()
+                .filter(customersFilter -> customersFilter.getInsuranceModel().getInsurancePackageName().equals(InsuranceCatalogue.EXTRA.getPackageName()))
+                .collect(Collectors.toList());
+
+        System.out.println(customersExtra);
 
         System.out.println();
         System.out.println("..................");
