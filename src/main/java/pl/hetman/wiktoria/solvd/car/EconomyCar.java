@@ -12,7 +12,6 @@ public class EconomyCar extends CarModel {
     static{
         count = 0;
         LOGGER.info("Economy car static block");
-        //System.out.println("Economy car static block");
     }
 
     public EconomyCar(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay) {
