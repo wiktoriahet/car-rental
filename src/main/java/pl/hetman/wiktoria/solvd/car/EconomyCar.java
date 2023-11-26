@@ -22,7 +22,9 @@ public class EconomyCar extends CarModel {
     }
 
     public static void displayCount(){
+        LOGGER.info("displayCount()");
         System.out.println("Economy cars in use: " + count);
+        LOGGER.info("displayCount()");
     }
 
     @Override
