@@ -12,16 +12,41 @@ public class InsuranceModel implements IInsurance {
     private boolean theftInsurance;
     private boolean accidentsInsurance;
     private boolean destructionInsurance;
+    private InsuranceCatalogue insuranceCatalogue;
 
     public InsuranceModel() {
     }
 
-    public InsuranceModel(Long id, String insurancePackageName, boolean theftInsurance, boolean accidentsInsurance, boolean destructionInsurance) {
-        this.id = id;
-        this.insurancePackageName = insurancePackageName;
-        this.theftInsurance = theftInsurance;
-        this.accidentsInsurance = accidentsInsurance;
-        this.destructionInsurance = destructionInsurance;
+    public InsuranceModel(InsuranceCatalogue insuranceCatalogue){
+        LOGGER.info("InsuranceModel(" + insuranceCatalogue.getPackageName() + ")");
+
+        switch (insuranceCatalogue) {
+            case BASIC:
+                this.id = UniqueIdGenerator.generateId();
+                this.insurancePackageName =insuranceCatalogue.getPackageName();
+                this.theftInsurance = false;
+                this.accidentsInsurance =false;
+                this.destructionInsurance =false;
+                break;
+
+            case EXTRA:
+                this.id = UniqueIdGenerator.generateId();
+                this.insurancePackageName =insuranceCatalogue.getPackageName();
+                this.theftInsurance = false;
+                this.accidentsInsurance =true;
+                this.destructionInsurance =false;
+                break;
+
+            case DELUXE:
+                this.id = UniqueIdGenerator.generateId();
+                this.insurancePackageName =insuranceCatalogue.getPackageName();
+                this.theftInsurance = true;
+                this.accidentsInsurance =true;
+                this.destructionInsurance =true;
+                break;
+        }
+
+        LOGGER.info("InsuranceModel(...)");
     }
 
     @Override
@@ -118,6 +143,14 @@ public class InsuranceModel implements IInsurance {
         this.destructionInsurance = destructionInsurance;
     }
 
+    public InsuranceCatalogue getInsuranceCatalogue() {
+        return insuranceCatalogue;
+    }
+
+    public void setInsuranceCatalogue(InsuranceCatalogue insuranceCatalogue) {
+        this.insuranceCatalogue = insuranceCatalogue;
+    }
+
     @Override
     public String toString() {
         return "InsuranceModel{" +
@@ -126,6 +159,7 @@ public class InsuranceModel implements IInsurance {
                 ", theftInsurance=" + theftInsurance +
                 ", accidentsInsurance=" + accidentsInsurance +
                 ", destructionInsurance=" + destructionInsurance +
+                ", insuranceCatalogue=" + insuranceCatalogue +
                 '}';
     }
 
