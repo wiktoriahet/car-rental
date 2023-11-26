@@ -26,8 +26,7 @@ class CarRentalShopTest {
         CarRentalShop carRentalShop = new CarRentalShop();
         carRentalShop.setStatus(ShoppingStatus.ONGOING.getStatus());
         CarModel carModel = new SuvCar(UniqueIdGenerator.generateId(), SuvModel.CAYENNE.getModel(), true, false, SuvModel.CAYENNE.getPricePerDay(), true, true, true);
-        InsuranceModel insuranceModel = new InsuranceModel();
-        insuranceModel.chooseInsurance(InsuranceCatalogue.BASIC);
+        InsuranceModel insuranceModel = new InsuranceModel(InsuranceCatalogue.BASIC);
         Basket<Objects> basket = new Basket<>();
 
         //when
@@ -49,8 +48,7 @@ class CarRentalShopTest {
         CarRentalShop carRentalShop = new CarRentalShop();
         carRentalShop.setStatus(ShoppingStatus.ONGOING.getStatus());
         CarModel carModel = new SuvCar(UniqueIdGenerator.generateId(), SuvModel.CAYENNE.getModel(), true, false, SuvModel.CAYENNE.getPricePerDay(), true, true, true);
-        InsuranceModel insuranceModel = new InsuranceModel();
-        insuranceModel.chooseInsurance(InsuranceCatalogue.BASIC);
+        InsuranceModel insuranceModel = new InsuranceModel(InsuranceCatalogue.BASIC);
         Basket<Objects> basket;
         basket = carRentalShop.addToBasket(carModel, insuranceModel);
 

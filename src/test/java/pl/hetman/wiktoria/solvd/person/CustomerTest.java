@@ -18,8 +18,7 @@ class CustomerTest {
     @Test
     void customer() throws PersonException {
         //given
-        InsuranceModel insuranceModel = new InsuranceModel();
-        insuranceModel.chooseInsurance(InsuranceCatalogue.BASIC);
+        InsuranceModel insuranceModel = new InsuranceModel(InsuranceCatalogue.BASIC);
         CarModel carModel = new CarModel(UniqueIdGenerator.generateId(), EconomyModel.IBIZA.getModel(), true, true, EconomyModel.IBIZA.getPricePerDay());
         Customer customer = new Customer(UniqueIdGenerator.generateId(), "Anna", "Nowak", insuranceModel, carModel);
 

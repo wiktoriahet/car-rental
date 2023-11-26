@@ -50,38 +50,6 @@ public class InsuranceModel implements IInsurance {
     }
 
     @Override
-    public String chooseInsurance(InsuranceCatalogue insuranceCatalogue) {
-        LOGGER.info("chooseInsurance(" + insuranceCatalogue.getPackageName() + ")");
-
-        switch (insuranceCatalogue) {
-            case BASIC:
-                setId(UniqueIdGenerator.generateId());
-                setInsurancePackageName(insuranceCatalogue.getPackageName());
-                setTheftInsurance(false);
-                setAccidentsInsurance(false);
-                setDestructionInsurance(false);
-                break;
-
-            case EXTRA:
-                setId(UniqueIdGenerator.generateId());
-                setInsurancePackageName(insuranceCatalogue.getPackageName());
-                setTheftInsurance(false);
-                setAccidentsInsurance(true);
-                setDestructionInsurance(false);
-                break;
-            case DELUXE:
-                setId(UniqueIdGenerator.generateId());
-                setInsurancePackageName(insuranceCatalogue.getPackageName());
-                setTheftInsurance(true);
-                setAccidentsInsurance(true);
-                setDestructionInsurance(true);
-                break;
-        }
-
-        LOGGER.info("chooseInsurance(...)");
-        return insuranceCatalogue.getPackageName();
-    }
-
     public StringBuilder printInsuranceInformation(InsuranceCatalogue insuranceCatalogue) {
         LOGGER.info("printInsuranceInformation(" + insuranceCatalogue.getPackageName() + ")");
         StringBuilder stringBuilder = new StringBuilder();

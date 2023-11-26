@@ -21,8 +21,7 @@ class CarRentalModelTest {
     @Test
     void validateRentCar() throws CarRentalException {
         //given
-        InsuranceModel insuranceModel = new InsuranceModel();
-        insuranceModel.chooseInsurance(InsuranceCatalogue.BASIC);
+        InsuranceModel insuranceModel = new InsuranceModel(InsuranceCatalogue.BASIC);
         //InsuranceModel insuranceModel = null;
         CarModel carModel = new EconomyCar(UniqueIdGenerator.generateId(), EconomyModel.FOCUS.getModel(), true, true, EconomyModel.FOCUS.getPricePerDay());
         //CarModel carModel = null;
@@ -44,8 +43,7 @@ class CarRentalModelTest {
     @Test
     void checkPriceCalculations() {
         //given
-        InsuranceModel insuranceModel = new InsuranceModel();
-        insuranceModel.chooseInsurance(InsuranceCatalogue.BASIC);
+        InsuranceModel insuranceModel = new InsuranceModel(InsuranceCatalogue.BASIC);
         CarModel carModel = new EconomyCar(UniqueIdGenerator.generateId(), EconomyModel.IBIZA.getModel(), true, true, EconomyModel.IBIZA.getPricePerDay());
         RentalStatus rentalStatusAvailable = RentalStatus.AVAILABLE;
         CarRentalModel carRentalModel = new CarRentalModel(UniqueIdGenerator.generateId(), 7, carModel, insuranceModel, rentalStatusAvailable);
