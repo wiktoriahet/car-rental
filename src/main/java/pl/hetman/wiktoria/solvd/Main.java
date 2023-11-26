@@ -22,6 +22,7 @@ import pl.hetman.wiktoria.solvd.person.Employee;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -274,6 +275,31 @@ public class Main {
 
         System.out.println();
         System.out.println("..................");
+
+        //6. Using custom lambda function to calculate price for given number of days
+        System.out.println("..................");
+        System.out.println();
+
+        int days = 5;
+        Function<CarModel, Double> getPricePerDay = price -> price.getFeePerDay();
+        Function<Double, Double> calculatePrice = price -> price * days;
+
+        Double result = getPricePerDay.andThen(calculatePrice).apply(suvCarOne);
+        System.out.println(result);
+
+        System.out.println();
+        System.out.println("..................");
+
+        //7. Using custom lambda function to print Insurance Catalogue
+        Function<InsuranceCatalogue, String> printCatalogue = insuranceCatalogue -> insuranceCatalogue.toString();
+        System.out.println(printCatalogue.apply(InsuranceCatalogue.BASIC));
+
+        //8. Using custom lambda function to create new car
+        System.out.println(existingCars.size());
+        Function<CarModel, EconomyCar> lambdaCar = name -> new EconomyCar(UniqueIdGenerator.generateId(), EconomyModel.IBIZA.getModel(), true, true, EconomyModel.IBIZA.getPricePerDay());
+        existingCars.add(lambdaCar.apply(new CarModel()));
+        carList.printCarList();
+        System.out.println(existingCars.size());
 
     }
 }
