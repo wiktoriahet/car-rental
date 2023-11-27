@@ -14,6 +14,7 @@ import pl.hetman.wiktoria.solvd.company.Department;
 import pl.hetman.wiktoria.solvd.customlinkedlist.GenericLinkedList;
 import pl.hetman.wiktoria.solvd.exceptions.DepartmentException;
 import pl.hetman.wiktoria.solvd.exceptions.PersonException;
+import pl.hetman.wiktoria.solvd.functionalinterfaces.Print;
 import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceCatalogue;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
@@ -290,16 +291,41 @@ public class Main {
         System.out.println();
         System.out.println("..................");
 
-        //7. Using custom lambda function to print Insurance Catalogue
+        //7. Using custom lambda function to print Insurance Catalogue\
+        System.out.println("..................");
+        System.out.println();
+
         Function<InsuranceCatalogue, String> printCatalogue = insuranceCatalogue -> insuranceCatalogue.toString();
         System.out.println(printCatalogue.apply(InsuranceCatalogue.BASIC));
 
+        System.out.println();
+        System.out.println("..................");
+
         //8. Using custom lambda function to create new car
+        System.out.println("..................");
+        System.out.println();
+
         System.out.println(existingCars.size());
         Function<CarModel, EconomyCar> lambdaCar = name -> new EconomyCar(UniqueIdGenerator.generateId(), EconomyModel.IBIZA.getModel(), true, true, EconomyModel.IBIZA.getPricePerDay());
         existingCars.add(lambdaCar.apply(new CarModel()));
         carList.printCarList();
         System.out.println(existingCars.size());
+
+        System.out.println();
+        System.out.println("..................");
+
+        //9. Using custom functional interface to print information
+        System.out.println("..................");
+        System.out.println();
+
+        Print<String> insurancePrinter = x -> System.out.println(x);
+        insurancePrinter.print(InsuranceCatalogue.BASIC.getPackageName());
+
+        Print<CarModel> carModelPrinter = x -> System.out.println("Printing CarModel: " + x);
+        carModelPrinter.print(suvCarOne);
+
+        System.out.println();
+        System.out.println("..................");
 
     }
 }
