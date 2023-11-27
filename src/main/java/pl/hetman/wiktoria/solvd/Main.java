@@ -8,12 +8,16 @@ import pl.hetman.wiktoria.solvd.car.SedanCar;
 import pl.hetman.wiktoria.solvd.car.SedanModel;
 import pl.hetman.wiktoria.solvd.car.SuvCar;
 import pl.hetman.wiktoria.solvd.car.SuvModel;
+import pl.hetman.wiktoria.solvd.carrental.Basket;
 import pl.hetman.wiktoria.solvd.carrental.CarRentalOffer;
+import pl.hetman.wiktoria.solvd.carrental.rent.CarRentalModel;
+import pl.hetman.wiktoria.solvd.carrental.rent.RentalStatus;
 import pl.hetman.wiktoria.solvd.company.CompanyStructure;
 import pl.hetman.wiktoria.solvd.company.Department;
 import pl.hetman.wiktoria.solvd.customlinkedlist.GenericLinkedList;
 import pl.hetman.wiktoria.solvd.exceptions.DepartmentException;
 import pl.hetman.wiktoria.solvd.exceptions.PersonException;
+import pl.hetman.wiktoria.solvd.functionalinterfaces.Order;
 import pl.hetman.wiktoria.solvd.functionalinterfaces.Print;
 import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceCatalogue;
@@ -323,6 +327,23 @@ public class Main {
 
         Print<CarModel> carModelPrinter = x -> System.out.println("Printing CarModel: " + x);
         carModelPrinter.print(suvCarOne);
+
+        System.out.println();
+        System.out.println("..................");
+
+        //9. Using custom functional interface to make a quick order
+        System.out.println("..................");
+        System.out.println();
+
+        CarRentalModel carRentalModel = new CarRentalModel(UniqueIdGenerator.generateId(), 10, suvCarThree, insuranceBasic, RentalStatus.AVAILABLE);
+
+        Order<CarRentalModel, CarRentalModel> quickCarWithInsuranceOrder = x -> {
+            Basket<CarRentalModel> basket = new Basket<>();
+            Basket.insert(basket, x);
+            Basket.printList(basket);
+            return basket;
+        };
+        Basket<CarRentalModel> carRentalModelQuickOrder = quickCarWithInsuranceOrder.quickOrder(carRentalModel);
 
         System.out.println();
         System.out.println("..................");
