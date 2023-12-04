@@ -27,6 +27,7 @@ import pl.hetman.wiktoria.solvd.person.Employee;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -160,6 +161,8 @@ public class Main {
         customers.add(customerAdamAdamski);
         Customer customerJohnJohnson = new Customer(UniqueIdGenerator.generateId(), "John", "Johnson", insuranceDeluxe, sedanCarThree);
         customers.add(customerJohnJohnson);
+        Customer customerFilipFilipiuk = new Customer(UniqueIdGenerator.generateId(), "Filip", "Filipiuk", insuranceExtra, suvCarOne);
+        customers.add(customerFilipFilipiuk);
 
         System.out.println();
         System.out.println("..................");
@@ -175,6 +178,16 @@ public class Main {
         Employee employeeAdamMickiewicz = new Employee(UniqueIdGenerator.generateId(), "Adam", "Mickiewicz", customers);
         Employee employeeJanKochanowski = new Employee(UniqueIdGenerator.generateId(), "Jan", "Kochanowski", customers);
         Employee employeeBoleslawPrus = new Employee(UniqueIdGenerator.generateId(), "Boleslaw", "Prus", customers);
+
+        //creating list of employees
+        List<Employee> employees = new ArrayList<>();
+        employees.add(employeeAnnaNowak);
+        employees.add(employeeBeataKowalska);
+        employees.add(employeeTomTomski);
+        employees.add(employeeJanNowak);
+        employees.add(employeeAdamMickiewicz);
+        employees.add(employeeJanKochanowski);
+        employees.add(employeeBoleslawPrus);
 
         System.out.println();
         System.out.println("..................");
@@ -234,7 +247,7 @@ public class Main {
         System.out.println();
         System.out.println("..................");
 
-        //2. using streams with lambda to display all freemont cars from existing cars list
+        //2. using streams (1) with lambda to display all freemont cars from existing cars list
         System.out.println("..................");
         System.out.println();
 
@@ -268,7 +281,7 @@ public class Main {
         System.out.println();
         System.out.println("..................");
 
-        //5. Using streams to print customers that have Extra insurance
+        //5. Using streams (2) to print customers that have Extra insurance
         System.out.println("..................");
         System.out.println();
 
@@ -348,5 +361,81 @@ public class Main {
         System.out.println();
         System.out.println("..................");
 
+        //10. Using stream to create list of existing cars names
+        System.out.println("..................");
+        System.out.println();
+
+        List<String> carsNames = existingCars.stream()
+                .map(CarModel::getCarModelName)
+                .collect(Collectors.toList());
+        System.out.println("Existing cars names: " + carsNames);
+
+        System.out.println();
+        System.out.println("..................");
+
+        //11. Using stream to calculate average price per day of existing cars
+        System.out.println("..................");
+        System.out.println();
+
+        double averageCarPrice = existingCars.stream()
+                .collect(Collectors.averagingDouble(CarModel::getFeePerDay));
+        System.out.println("Avarage price of existing cars: " + averageCarPrice);
+
+        System.out.println();
+        System.out.println("..................");
+
+        //12. Printing a list of cheap cars using streams
+        System.out.println("..................");
+        System.out.println();
+
+        List<CarModel> cheapCars = existingCars.stream()
+                .filter(cheap -> cheap.getFeePerDay() < 300)
+                .collect(Collectors.toList());
+
+        System.out.println("List of cheap cars: " + cheapCars);
+
+        System.out.println();
+        System.out.println("..................");
+
+        //13. Printing id of the employees from existing company structure
+        // that match desired department name
+        System.out.println("..................");
+        System.out.println();
+
+        List<Long> employeesId = companyStructure.getCompanyStructure().entrySet().stream()
+                .filter(department -> "London department".equals(department.getValue()))
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+
+        System.out.println("Ids of employees hired in London department" + employeesId);
+
+        System.out.println();
+        System.out.println("..................");
+
+        //14. Printing all employees with the desired surname
+        System.out.println("..................");
+        System.out.println();
+
+        List<Employee> employeesWithNowakSurname = employees.stream()
+                .filter(surname -> surname.getSurname().equals("Nowak"))
+                .collect(Collectors.toList());
+        System.out.println("Employees with surname Nowak: " + employeesWithNowakSurname);
+
+        System.out.println();
+        System.out.println("..................");
+
+        //15. Using streams to retrieve list of customers using desired car
+        System.out.println("..................");
+        System.out.println();
+
+        List<Long> customersRentingCayenne = customers
+                .stream()
+                .filter(model -> model.getCarModel().getCarModelName().equals(SuvModel.CAYENNE.getModel()))
+                .map(Customer::getId)
+                .collect(Collectors.toList());
+        System.out.println("Ids of customers renting Cayenne: " + customersRentingCayenne);
+
+        System.out.println();
+        System.out.println("..................");
     }
 }
