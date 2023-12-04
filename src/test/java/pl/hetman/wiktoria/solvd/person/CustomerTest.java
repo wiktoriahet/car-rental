@@ -3,8 +3,10 @@ package pl.hetman.wiktoria.solvd.person;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pl.hetman.wiktoria.solvd.car.CarModel;
+import pl.hetman.wiktoria.solvd.car.EconomyModel;
 import pl.hetman.wiktoria.solvd.exceptions.PersonException;
 import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
+import pl.hetman.wiktoria.solvd.insurance.InsuranceCatalogue;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 
 class CustomerTest {
@@ -14,10 +16,10 @@ class CustomerTest {
     }
 
     @Test
-    void verifyCustomer() throws PersonException {
+    void customer() throws PersonException {
         //given
-        InsuranceModel insuranceModel = new InsuranceModel(UniqueIdGenerator.generateId(), "Deluxe", true, true, true, 500);
-        CarModel carModel = new CarModel(UniqueIdGenerator.generateId(), "ford", true, true, 500);
+        InsuranceModel insuranceModel = new InsuranceModel(InsuranceCatalogue.BASIC);
+        CarModel carModel = new CarModel(UniqueIdGenerator.generateId(), EconomyModel.IBIZA.getModel(), true, true, EconomyModel.IBIZA.getPricePerDay());
         Customer customer = new Customer(UniqueIdGenerator.generateId(), "Anna", "Nowak", insuranceModel, carModel);
 
         //when

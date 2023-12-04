@@ -2,6 +2,10 @@ package pl.hetman.wiktoria.solvd.company;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.hetman.wiktoria.solvd.car.CarList;
+import pl.hetman.wiktoria.solvd.person.Employee;
+
+import java.util.List;
 
 public class Department {
     private static final Logger LOGGER = LogManager.getLogger(Department.class);

@@ -4,6 +4,10 @@ import pl.hetman.wiktoria.solvd.exceptions.PersonException;
 
 public abstract class PersonModel implements IPerson {
 
-    void printInformation() throws PersonException {
-    }
+    void printInformation() throws PersonException {}
+
+//    @Override
+//    public void createAPerson() {
+//
+//    }
 }

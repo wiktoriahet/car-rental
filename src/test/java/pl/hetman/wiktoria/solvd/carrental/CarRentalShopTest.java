@@ -4,34 +4,36 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pl.hetman.wiktoria.solvd.car.CarModel;
 import pl.hetman.wiktoria.solvd.car.SuvCar;
+import pl.hetman.wiktoria.solvd.car.SuvModel;
 import pl.hetman.wiktoria.solvd.exceptions.CarRentalException;
 import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
+import pl.hetman.wiktoria.solvd.insurance.InsuranceCatalogue;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 import pl.hetman.wiktoria.solvd.logs.FileLogger;
 
 import java.util.Objects;
 
 //Generics and collections task
-//third task review
 class CarRentalShopTest {
 
-    static{
-        System.setProperty("log4j.configurationFile","log4j2.xml");
+    static {
+        System.setProperty("log4j.configurationFile", "log4j2.xml");
     }
 
     @Test
     void addToBasket() {
         //given
         CarRentalShop carRentalShop = new CarRentalShop();
-        CarModel carModel = new SuvCar(UniqueIdGenerator.generateId(), "ford", true, false, 300, true, true, true);
-        InsuranceModel insuranceModel = new InsuranceModel(UniqueIdGenerator.generateId(), "Deluxe", true, true, true, 400);
+        carRentalShop.setStatus(ShoppingStatus.ONGOING.getStatus());
+        CarModel carModel = new SuvCar(UniqueIdGenerator.generateId(), SuvModel.CAYENNE.getModel(), true, false, SuvModel.CAYENNE.getPricePerDay(), true, true, true);
+        InsuranceModel insuranceModel = new InsuranceModel(InsuranceCatalogue.BASIC);
         Basket<Objects> basket = new Basket<>();
 
         //when
-        try{
+        try {
             basket = carRentalShop.addToBasket(carModel, insuranceModel);
             Basket.printList(basket);
-        }catch (CarRentalException e){
+        } catch (CarRentalException e) {
             FileLogger.logToFile(e.getMessage());
         }
 
@@ -41,11 +43,12 @@ class CarRentalShopTest {
     }
 
     @Test
-    void addToBasketAndRemoveFromBasket() throws CarRentalException{
+    void addToBasketAndRemoveFromBasket() throws CarRentalException {
         //given
         CarRentalShop carRentalShop = new CarRentalShop();
-        CarModel carModel = new SuvCar(UniqueIdGenerator.generateId(), "ford", true, false, 300, true, true, true);
-        InsuranceModel insuranceModel = new InsuranceModel(UniqueIdGenerator.generateId(), "Deluxe", true, true, true, 400);
+        carRentalShop.setStatus(ShoppingStatus.ONGOING.getStatus());
+        CarModel carModel = new SuvCar(UniqueIdGenerator.generateId(), SuvModel.CAYENNE.getModel(), true, false, SuvModel.CAYENNE.getPricePerDay(), true, true, true);
+        InsuranceModel insuranceModel = new InsuranceModel(InsuranceCatalogue.BASIC);
         Basket<Objects> basket;
         basket = carRentalShop.addToBasket(carModel, insuranceModel);
 
@@ -55,6 +58,7 @@ class CarRentalShopTest {
 
         //then
         Assertions.assertTrue(removedFromBasket, "Items were not removed from the basket");
+        Assertions.assertEquals(ShoppingStatus.CANCELED.getStatus(), carRentalShop.getStatus(), "Status is not equal");
 
 
     }

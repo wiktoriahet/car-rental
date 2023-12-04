@@ -11,7 +11,7 @@ import pl.hetman.wiktoria.solvd.person.Employee;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-//third task review
+
 //Generics and collections task
 public class CompanyStructure {
     private static final Logger LOGGER = LogManager.getLogger(CarRentalModel.class);
@@ -25,19 +25,19 @@ public class CompanyStructure {
     }
 
     public CompanyStructure(Map<Long, String> companyStructure) {
-        LOGGER.info("CompanyStructure(" + companyStructure + ")");
+        LOGGER.info("CompanyStructure("+companyStructure+")");
         this.companyStructure = companyStructure;
         LOGGER.info("CompanyStructure(...)");
     }
 
     public void addToCompanyStructure(Employee employee, Department department) throws PersonException, DepartmentException {
         LOGGER.info("addToCompanyStructure()");
-        if (employee == null) {
+        if(employee == null){
             PersonException personException = new PersonException("Employee doesn't exist");
             FileLogger.logToFile(personException.getMessage());
             LOGGER.error(personException.getMessage());
             throw personException;
-        } else if (department == null) {
+        } else if(department == null){
             DepartmentException departmentException = new DepartmentException("Department doesn't exist");
             FileLogger.logToFile(departmentException.getMessage());
             LOGGER.error(departmentException.getMessage());
@@ -47,7 +47,7 @@ public class CompanyStructure {
         LOGGER.info("addToCompanyStructure(...)");
     }
 
-    public void printCompanyStructure() {
+    public void printCompanyStructure(){
         LOGGER.info("printCompanyStructure()");
         System.out.println(companyStructure);
         LOGGER.info("printCompanyStructure(...)");

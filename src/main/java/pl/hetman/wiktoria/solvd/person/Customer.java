@@ -44,7 +44,7 @@ public class Customer extends PersonModel {
                 .append("\n")
                 .append("Name and surname: " + name + " " + surname)
                 .append("\n")
-                .append("Insurance: " + insuranceModel.getPackageName())
+                .append("Insurance: " + insuranceModel.getInsurancePackageName())
                 .append("\n")
                 .append("Car id and name: " + carModel.getId() + " " + carModel.getCarModelName());
 

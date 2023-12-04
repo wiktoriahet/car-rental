@@ -21,8 +21,8 @@ public class CarList {
         LOGGER.info("CarList(...)");
     }
 
-    public CarList(List<CarModel> cars) {
-        LOGGER.info("CarList(" + cars + ")");
+    public CarList(List<CarModel> cars){
+        LOGGER.info("CarList("+cars+")");
         this.cars = cars;
         LOGGER.info("CarList(...)");
     }
@@ -32,8 +32,8 @@ public class CarList {
         this.cars = cars;
     }
 
-    public void printCarList() {
-        LOGGER.info("printCarList(" + cars + ")");
+    public void printCarList(){
+        LOGGER.info("printCarList("+cars+")");
         System.out.println(cars);
         LOGGER.info("printCarList(...)");
     }

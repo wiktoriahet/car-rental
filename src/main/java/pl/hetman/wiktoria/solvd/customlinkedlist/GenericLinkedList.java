@@ -9,6 +9,32 @@ public class GenericLinkedList<T> {
 
     private Node head;
 
+    private static class Node<T> {
+        private T data;
+        private Node next;
+
+        Node(T data) {
+            this.data = data;
+            next = null;
+        }
+
+        public T getData() {
+            return data;
+        }
+
+        public void setData(T data) {
+            this.data = data;
+        }
+
+        public Node getNext() {
+            return next;
+        }
+
+        public void setNext(Node next) {
+            this.next = next;
+        }
+    }
+
     public static <T> GenericLinkedList insert(GenericLinkedList list, T data) {
 
         LOGGER.info("insert()");
@@ -32,7 +58,7 @@ public class GenericLinkedList<T> {
     public static void printList(GenericLinkedList list) {
         LOGGER.info("printList()");
         Node currentNode = list.head;
-        if (currentNode == null) {
+        if(currentNode==null){
             LOGGER.info("List is empty");
         }
 
@@ -90,32 +116,6 @@ public class GenericLinkedList<T> {
 
     public void setHead(Node head) {
         this.head = head;
-    }
-
-    private static class Node<T> {
-        private T data;
-        private Node next;
-
-        Node(T data) {
-            this.data = data;
-            next = null;
-        }
-
-        public T getData() {
-            return data;
-        }
-
-        public void setData(T data) {
-            this.data = data;
-        }
-
-        public Node getNext() {
-            return next;
-        }
-
-        public void setNext(Node next) {
-            this.next = next;
-        }
     }
 }
 

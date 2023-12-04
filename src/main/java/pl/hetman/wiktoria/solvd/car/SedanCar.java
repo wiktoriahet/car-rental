@@ -2,29 +2,29 @@ package pl.hetman.wiktoria.solvd.car;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-//third task review
+
 public class SedanCar extends CarModel {
 
     private static final Logger LOGGER = LogManager.getLogger(SedanCar.class);
+
+    private boolean premium;
     static int count;
 
-    static {
+    static{
         count = 0;
         LOGGER.info("Sedan car static block");
     }
 
-    private boolean premium;
-
 
     public SedanCar(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay, boolean premium) {
         super(id, carModelName, airConditioning, spareTire, feePerDay);
-        LOGGER.info("SedanCar(" + id + ", " + carModelName + ", " + airConditioning + ", " + spareTire + ", " + feePerDay + ", " + premium + ")");
+        LOGGER.info("SedanCar("+id+", "+carModelName+", "+airConditioning+", "+spareTire+", "+SedanModel.valueOf(carModelName.toUpperCase()).getPricePerDay()+", "+premium+")");
         this.premium = premium;
         count++;
         LOGGER.info("SedanCar(...)");
     }
 
-    public static void displayCount() {
+    public static void displayCount(){
         LOGGER.info("displayCount()");
         System.out.println("Sedan cars in use: " + count);
         LOGGER.info("displayCount(...)");

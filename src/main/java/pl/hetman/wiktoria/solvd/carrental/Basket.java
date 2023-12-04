@@ -5,7 +5,7 @@ import pl.hetman.wiktoria.solvd.customlinkedlist.GenericLinkedList;
 import java.util.Objects;
 
 //Generics and collections task
-public class Basket<T> extends GenericLinkedList<T> {
+public class Basket<T> extends GenericLinkedList<T>{
 
     private GenericLinkedList<T> basket;
 

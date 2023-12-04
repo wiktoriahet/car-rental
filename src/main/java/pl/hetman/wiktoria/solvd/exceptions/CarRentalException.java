@@ -1,6 +1,6 @@
 package pl.hetman.wiktoria.solvd.exceptions;
 
-public class CarRentalException extends Exception {
+public class CarRentalException extends Exception{
     public CarRentalException(String message) {
         super(message);
     }
