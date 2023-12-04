@@ -11,7 +11,7 @@ class CarModelTest {
     }
 
     @Test
-    void displayInformation() {
+    void validateDisplayInformation() {
         //given
         CarModel carModel = new SedanCar(UniqueIdGenerator.generateId(), "Ford", true, true, 600, true);
 

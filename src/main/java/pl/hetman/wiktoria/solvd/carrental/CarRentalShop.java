@@ -3,16 +3,14 @@ package pl.hetman.wiktoria.solvd.carrental;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.hetman.wiktoria.solvd.car.CarModel;
+import pl.hetman.wiktoria.solvd.carrental.rent.CarRentalModel;
 import pl.hetman.wiktoria.solvd.exceptions.CarException;
 import pl.hetman.wiktoria.solvd.exceptions.CarRentalException;
 import pl.hetman.wiktoria.solvd.exceptions.InsuranceException;
 import pl.hetman.wiktoria.solvd.exceptions.ShopException;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 import pl.hetman.wiktoria.solvd.logs.FileLogger;
-import pl.hetman.wiktoria.solvd.carrental.rent.CarRentalModel;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 //Generics and collections task
@@ -24,13 +22,14 @@ public class CarRentalShop extends CarRentalOffer implements IShop {
 
     //private Basket basket = new Basket();
 
-    private void chooseOffer(){
+    private void chooseOffer() {
         LOGGER.info("chooseOffer()");
         System.out.println("Choose offer");
         LOGGER.info("chooseOffer(...)");
     }
-    private void chooseOffer(CarModel carModel, InsuranceModel insuranceModel){
-        LOGGER.info("chooseOffer("+carModel+", "+insuranceModel+")");
+
+    private void chooseOffer(CarModel carModel, InsuranceModel insuranceModel) {
+        LOGGER.info("chooseOffer(" + carModel + ", " + insuranceModel + ")");
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
                 .append("Confirm chosen offer: ")
@@ -46,12 +45,12 @@ public class CarRentalShop extends CarRentalOffer implements IShop {
     @Override
     public Basket addToBasket(CarModel carModel, InsuranceModel insuranceModel) throws CarRentalException {
         LOGGER.info("Adding car and insurance to the basket");
-        if(carModel==null){
+        if (carModel == null) {
             CarException carException = new CarException("Problem with car while adding to basket" + "\n");
             FileLogger.logToFile(carException.getMessage());
             LOGGER.error(carException.getMessage());
             throw carException;
-        } else if(insuranceModel==null){
+        } else if (insuranceModel == null) {
             InsuranceException insuranceException = new InsuranceException("Problem with insurance while adding to basket" + "\n");
             FileLogger.logToFile(insuranceException.getMessage());
             LOGGER.error(insuranceException.getMessage());
@@ -66,13 +65,13 @@ public class CarRentalShop extends CarRentalOffer implements IShop {
     }
 
     @Override
-    public boolean removeFromBasket(Basket<Objects> basket, CarModel carModel, InsuranceModel insuranceModel) throws CarRentalException{
-        if(carModel==null){
+    public boolean removeFromBasket(Basket<Objects> basket, CarModel carModel, InsuranceModel insuranceModel) throws CarRentalException {
+        if (carModel == null) {
             CarException carException = new CarException("Problem with car while adding to basket" + "\n");
             FileLogger.logToFile(carException.getMessage());
             LOGGER.error(carException.getMessage());
             throw carException;
-        } else if(insuranceModel==null){
+        } else if (insuranceModel == null) {
             InsuranceException insuranceException = new InsuranceException("Problem with insurance while adding to basket" + "\n");
             FileLogger.logToFile(insuranceException.getMessage());
             LOGGER.error(insuranceException.getMessage());
@@ -85,10 +84,10 @@ public class CarRentalShop extends CarRentalOffer implements IShop {
     }
 
     @Override
-    public boolean finishShopping(CarRentalModel carRentalModel)throws ShopException {
-        LOGGER.info("finishShopping("+carRentalModel+")");
+    public boolean finishShopping(CarRentalModel carRentalModel) throws ShopException {
+        LOGGER.info("finishShopping(" + carRentalModel + ")");
         boolean finishedShopping = false;
-        if(carRentalModel==null){
+        if (carRentalModel == null) {
             ShopException cannotRemoveFromBasket = new ShopException("Cannot remove from basket");
             FileLogger.logToFile(cannotRemoveFromBasket.getMessage());
             LOGGER.error(cannotRemoveFromBasket.getMessage());

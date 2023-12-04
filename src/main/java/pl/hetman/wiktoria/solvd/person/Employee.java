@@ -17,8 +17,8 @@ public class Employee extends PersonModel {
     private String surname;
     private List<Customer> customers;
 
-    public Employee(Long id, String name, String surname, List<Customer> customers)throws PersonException {
-        LOGGER.info("Employee("+id+", "+name+", "+surname+", "+customers+")");
+    public Employee(Long id, String name, String surname, List<Customer> customers) throws PersonException {
+        LOGGER.info("Employee(" + id + ", " + name + ", " + surname + ", " + customers + ")");
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -28,7 +28,7 @@ public class Employee extends PersonModel {
     }
 
     public Employee(List<Customer> customers) {
-        LOGGER.info("Employee("+customers+")");
+        LOGGER.info("Employee(" + customers + ")");
         this.customers = customers;
         LOGGER.info("Employee(...)");
     }
@@ -36,7 +36,7 @@ public class Employee extends PersonModel {
     @Override
     void printInformation() throws PersonException {
         LOGGER.info("printInformation()");
-        if(id==null){
+        if (id == null) {
             PersonException personException = new PersonException("Employee doesn't exist");
             FileLogger.logToFile(personException.getMessage());
             LOGGER.error(personException.getMessage());

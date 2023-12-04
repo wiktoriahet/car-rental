@@ -8,18 +8,17 @@ import java.util.Objects;
 public class CarModel implements ICar {
 
     private static final Logger LOGGER = LogManager.getLogger(CarModel.class);
-
+    double feePerDay;
     private Long id;
     private String carModelName;
     private boolean airConditioning;
     private boolean spareTire;
-    double feePerDay;
 
     public CarModel() {
     }
 
     public CarModel(Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay) {
-        LOGGER.info("CarModel("+id+", "+carModelName+", "+spareTire+", "+feePerDay+")");
+        LOGGER.info("CarModel(" + id + ", " + carModelName + ", " + spareTire + ", " + feePerDay + ")");
         this.id = id;
         this.carModelName = carModelName;
         this.airConditioning = airConditioning;
