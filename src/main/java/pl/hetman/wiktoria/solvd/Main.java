@@ -8,6 +8,7 @@ import pl.hetman.wiktoria.solvd.car.SuvCar;
 import pl.hetman.wiktoria.solvd.carrental.CarRentalOffer;
 import pl.hetman.wiktoria.solvd.company.CompanyStructure;
 import pl.hetman.wiktoria.solvd.company.Department;
+import pl.hetman.wiktoria.solvd.customlinkedlist.GenericLinkedList;
 import pl.hetman.wiktoria.solvd.exceptions.DepartmentException;
 import pl.hetman.wiktoria.solvd.exceptions.PersonException;
 import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
@@ -92,12 +93,12 @@ public class Main {
 
         companyStructure.printCompanyStructure();
 
-//        GenericLinkedList<Employee> employeeGenericLinkedList = new GenericLinkedList<>();
-//        GenericLinkedList.insert(employeeGenericLinkedList, employeeAdamMickiewicz);
-//        GenericLinkedList.insert(employeeGenericLinkedList, employeeJanKochanowski);
-//        GenericLinkedList.insert(employeeGenericLinkedList, employeeBoleslawPrus);
-//        GenericLinkedList.insert(employeeGenericLinkedList, employeeJanNowak);
-//        GenericLinkedList.printList(employeeGenericLinkedList);
+        GenericLinkedList<Employee> employeeGenericLinkedList = new GenericLinkedList<>();
+        GenericLinkedList.insert(employeeGenericLinkedList, employeeAdamMickiewicz);
+        GenericLinkedList.insert(employeeGenericLinkedList, employeeJanKochanowski);
+        GenericLinkedList.insert(employeeGenericLinkedList, employeeBoleslawPrus);
+        GenericLinkedList.insert(employeeGenericLinkedList, employeeJanNowak);
+        GenericLinkedList.printList(employeeGenericLinkedList);
 
 
     }
