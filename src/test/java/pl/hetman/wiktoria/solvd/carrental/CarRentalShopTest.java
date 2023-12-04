@@ -12,6 +12,7 @@ import pl.hetman.wiktoria.solvd.logs.FileLogger;
 import java.util.Objects;
 
 //Generics and collections task
+//third task review
 class CarRentalShopTest {
 
     static{

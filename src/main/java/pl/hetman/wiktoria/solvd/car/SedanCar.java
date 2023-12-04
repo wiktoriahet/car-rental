@@ -2,7 +2,7 @@ package pl.hetman.wiktoria.solvd.car;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+//third task review
 public class SedanCar extends CarModel {
 
     private static final Logger LOGGER = LogManager.getLogger(SedanCar.class);

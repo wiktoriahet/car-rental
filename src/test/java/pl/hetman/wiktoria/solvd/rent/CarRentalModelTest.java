@@ -8,7 +8,7 @@ import pl.hetman.wiktoria.solvd.carrental.rent.CarRentalModel;
 import pl.hetman.wiktoria.solvd.exceptions.CarRentalException;
 import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
-
+//third task review
 class CarRentalModelTest {
 
     static{
