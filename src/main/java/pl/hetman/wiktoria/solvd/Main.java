@@ -25,6 +25,10 @@ import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
 import pl.hetman.wiktoria.solvd.person.Customer;
 import pl.hetman.wiktoria.solvd.person.Employee;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -437,5 +441,112 @@ public class Main {
 
         System.out.println();
         System.out.println("..................");
+
+        //Reflections
+        //Using reflection extract information(modifiers, return types, parameters, etc)
+        //about fields, constructors, and methods.
+        // Create object and call method using only reflection.
+
+
+        //Using reflections to retrieve information about fields
+        System.out.println("..................");
+        System.out.println();
+
+        SuvCar suvCar = new SuvCar(UniqueIdGenerator.generateId(), SuvModel.TOUAREG.getModel(), false, false, SuvModel.TOUAREG.getPricePerDay(), true, false, true);
+        Field[] declaredFields = suvCar.getClass().getDeclaredFields();
+
+        for (Field declaredField : declaredFields) {
+            System.out.println("Declared field: " + declaredField);
+            System.out.println("Declared field name: " + declaredField.getName());
+            System.out.println("Declared field type: " + declaredField.getType());
+            switch (declaredField.getModifiers()) {
+                case 1:
+                    System.out.println("Declared field modifiers: " + "public");
+                    break;
+                case 2:
+                    System.out.println("Declared field modifiers: " + "private");
+                    break;
+                case 4:
+                    System.out.println("Declared field modifiers: " + "protected");
+                    break;
+                case 8:
+                    System.out.println("Declared field modifiers: " + "static");
+                    break;
+                case 9:
+                    System.out.println("Declared field modifiers: " + "public static");
+                    break;
+                case 25:
+                    System.out.println("Declared field modifiers: " + "public static final");
+                    break;
+                case 26:
+                    System.out.println("Declared field modifiers: " + "private static final");
+                    break;
+            }
+        }
+
+        System.out.println();
+        System.out.println("..................");
+
+        //Using reflections to get methods
+        System.out.println("..................");
+        System.out.println();
+
+        Method[] declaredMethods = suvCar.getClass().getDeclaredMethods();
+        for (Method declaredMethod : declaredMethods) {
+            System.out.println("Declared method: " + declaredMethod);
+            System.out.println("Declared method name: " + declaredMethod.getName());
+            System.out.println("Declared method return type: " + declaredMethod.getReturnType());
+            switch (declaredMethod.getModifiers()) {
+                case 1:
+                    System.out.println("Declared method modifiers: " + "public");
+                    break;
+                case 2:
+                    System.out.println("Declared method modifiers: " + "private");
+                    break;
+                case 4:
+                    System.out.println("Declared method modifiers: " + "protected");
+                    break;
+                case 8:
+                    System.out.println("Declared method modifiers: " + "static");
+                    break;
+                case 9:
+                    System.out.println("Declared method modifiers: " + "public static");
+                    break;
+                case 25:
+                    System.out.println("Declared method modifiers: " + "public static final");
+                    break;
+                case 26:
+                    System.out.println("Declared method modifiers: " + "private static final");
+                    break;
+            }
+        }
+
+        System.out.println();
+        System.out.println("..................");
+
+        //Using reflections to create an object and calling method
+        System.out.println("..................");
+        System.out.println();
+
+
+        try {
+            Class<SuvCar> suvCarClass = (Class<SuvCar>) Class.forName(SuvCar.class.getName());
+            Constructor<SuvCar> declaredConstructor = suvCarClass.getDeclaredConstructor(Long.class, String.class, Boolean.TYPE, Boolean.TYPE, Double.TYPE, Boolean.TYPE, Boolean.TYPE, Boolean.TYPE);
+
+            //Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay, boolean fullSize, boolean fourWheelDrive, boolean premium
+            SuvCar suvCarReflection = declaredConstructor.newInstance(UniqueIdGenerator.generateId(), SuvModel.TOUAREG.getModel(), true, true, SuvModel.TOUAREG.getPricePerDay(), true, true, true);
+
+            Method displayInformation = suvCarClass.getDeclaredMethod("displayInformation");
+            displayInformation.invoke(suvCarReflection);
+
+
+        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException |
+                 InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println();
+        System.out.println("..................");
+
     }
 }
