@@ -93,12 +93,12 @@ public class Main {
 
         companyStructure.printCompanyStructure();
 
-//        GenericLinkedList<Employee> employeeGenericLinkedList = new GenericLinkedList<>();
-//        GenericLinkedList.insert(employeeGenericLinkedList, employeeAdamMickiewicz);
-//        GenericLinkedList.insert(employeeGenericLinkedList, employeeJanKochanowski);
-//        GenericLinkedList.insert(employeeGenericLinkedList, employeeBoleslawPrus);
-//        GenericLinkedList.insert(employeeGenericLinkedList, employeeJanNowak);
-//        GenericLinkedList.printList(employeeGenericLinkedList);
+        GenericLinkedList<Employee> employeeGenericLinkedList = new GenericLinkedList<>();
+        GenericLinkedList.insert(employeeGenericLinkedList, employeeAdamMickiewicz);
+        GenericLinkedList.insert(employeeGenericLinkedList, employeeJanKochanowski);
+        GenericLinkedList.insert(employeeGenericLinkedList, employeeBoleslawPrus);
+        GenericLinkedList.insert(employeeGenericLinkedList, employeeJanNowak);
+        GenericLinkedList.printList(employeeGenericLinkedList);
 
 
     }
