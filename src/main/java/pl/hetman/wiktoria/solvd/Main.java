@@ -442,12 +442,6 @@ public class Main {
         System.out.println();
         System.out.println("..................");
 
-        //Reflections
-        //Using reflection extract information(modifiers, return types, parameters, etc)
-        //about fields, constructors, and methods.
-        // Create object and call method using only reflection.
-
-
         //Using reflections to retrieve information about fields
         System.out.println("..................");
         System.out.println();
@@ -533,7 +527,6 @@ public class Main {
             Class<SuvCar> suvCarClass = (Class<SuvCar>) Class.forName(SuvCar.class.getName());
             Constructor<SuvCar> declaredConstructor = suvCarClass.getDeclaredConstructor(Long.class, String.class, Boolean.TYPE, Boolean.TYPE, Double.TYPE, Boolean.TYPE, Boolean.TYPE, Boolean.TYPE);
 
-            //Long id, String carModelName, boolean airConditioning, boolean spareTire, double feePerDay, boolean fullSize, boolean fourWheelDrive, boolean premium
             SuvCar suvCarReflection = declaredConstructor.newInstance(UniqueIdGenerator.generateId(), SuvModel.TOUAREG.getModel(), true, true, SuvModel.TOUAREG.getPricePerDay(), true, true, true);
 
             Method displayInformation = suvCarClass.getDeclaredMethod("displayInformation");
