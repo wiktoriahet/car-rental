@@ -16,6 +16,9 @@ public class Profile {
     private InsuranceModel insuranceModel;
     private CarModel carModel;
 
+    public Profile() {
+    }
+
     public Profile(String name, String surname, InsuranceModel insuranceModel, CarModel carModel) {
         this.name = name;
         this.surname = surname;
