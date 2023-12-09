@@ -30,7 +30,7 @@ public class ShopThread extends Thread {
             LOGGER.info("run()");
             Basket basket = carRentalShop.addToBasket(carModel, insuranceModel);
             System.out.println("### Shop thread for " + carModel.getCarModelName() + " and " + insuranceModel.getPackageName() + " ###");
-            Thread.sleep(100);
+            Thread.sleep(1000);
             LOGGER.info("run(...)");
         } catch (CarRentalException | InterruptedException e) {
             LOGGER.error(e.getMessage());
