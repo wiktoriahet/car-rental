@@ -29,6 +29,7 @@ public class ShopThread extends Thread {
         try {
             LOGGER.info("run()");
             Basket basket = carRentalShop.addToBasket(carModel, insuranceModel);
+            System.out.println("### Shop thread for " + carModel.getCarModelName() + " and " + insuranceModel.getPackageName() + " ###");
             Thread.sleep(100);
             LOGGER.info("run(...)");
         } catch (CarRentalException | InterruptedException e) {

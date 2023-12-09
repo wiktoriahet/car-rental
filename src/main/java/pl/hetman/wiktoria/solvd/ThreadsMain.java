@@ -1,6 +1,7 @@
 package pl.hetman.wiktoria.solvd;
 
 import pl.hetman.wiktoria.solvd.car.CarModel;
+import pl.hetman.wiktoria.solvd.carrental.CarRentalShop;
 import pl.hetman.wiktoria.solvd.exceptions.PersonException;
 import pl.hetman.wiktoria.solvd.idgenerator.UniqueIdGenerator;
 import pl.hetman.wiktoria.solvd.insurance.InsuranceModel;
@@ -9,6 +10,7 @@ import pl.hetman.wiktoria.solvd.person.Profile;
 import pl.hetman.wiktoria.solvd.threads.ConnectionPool;
 import pl.hetman.wiktoria.solvd.threads.DatabaseConnection;
 import pl.hetman.wiktoria.solvd.threads.ProfileThread;
+import pl.hetman.wiktoria.solvd.threads.ShopThread;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
@@ -17,7 +19,13 @@ import java.util.concurrent.TimeUnit;
 
 public class ThreadsMain {
 
+    static {
+        System.setProperty("log4j.configurationFile", "log4j2.xml");
+    }
+
     public static void main(String[] args) throws PersonException {
+
+        System.out.println("......");
 
         BlockingQueue<DatabaseConnection> instance = ConnectionPool.getInstance();
 
@@ -40,6 +48,14 @@ public class ThreadsMain {
         ProfileThread profileHenrykSienkiewicz = new ProfileThread(profile, customerHenrykSienkiewicz);
         ProfileThread profileMagdaGessler = new ProfileThread(profile, customerMagdaGessler);
 
+        CarRentalShop carRentalShop = new CarRentalShop();
+
+        ShopThread shopThread = new ShopThread(carRentalShop, carModel, insuranceModel);
+
+        System.out.println("......");
+        System.out.println();
+        System.out.println("......");
+
         ExecutorService executorService = Executors.newFixedThreadPool(instance.size());
         executorService.execute(profileAnnaNowak);
         executorService.execute(profileJanKowalski);
@@ -48,6 +64,7 @@ public class ThreadsMain {
         executorService.execute(profileHarryPotter);
         executorService.execute(profileHenrykSienkiewicz);
         executorService.execute(profileMagdaGessler);
+        executorService.execute(shopThread);
 
         executorService.shutdown();
         try {
